@@ -1,0 +1,25 @@
+aside.aside-left{float: left;height: 100vh;border-right:1px solid lightgrey;padding:1em;}
+.aside-left a{color:#f6921e;text-decoration:none;}
+.aside-left,.aside-left>h3{font-size: medium;padding: .5em .2em}
+.aside-left >ul{list-style: inside;width: 100%;overflow: hidden;padding: .5em}
+.aside-left >ul>li{padding: 2px}
+.aside-left >ul a{display: inline;}
+.aside-left ul.sub{margin-left: .8em;}
+.aside-left ul.sub li{overflow: hidden;width: 100%}
+.aside-left ul.sub li a.btn{font-size:10px;margin-top:4px;padding: 1px 4px}
+.aside-left hr{margin-bottom: .5em}
+.aside-left .lead li>a.selected{font-weight: 500}
+
+.table-stock-container{width: 55%;margin:4em auto}
+.table-stock-container a{text-align: right;font-size:small}
+table.table-stock{width: 100%;border-collapse: collapse}
+.table-stock tbody td,.table-stock tbody td a{text-align: center;font-size: medium}
+.table-stock tbody tr{border: 1px solid lightgray}
+.table-stock td,table th{padding: .8em}
+.table-stock tr:hover{background: #f4f4f4}
+
+
+.activo-form{width: 300px;margin: auto 3em;padding: .5em;border: 1px solid lightgray;background: #eee;color: grey;float:left}
+.activo-form form{width: 90%;margin: auto}
+.btn.right{margin:0;position: relative;float: right}
+a.btn{border: 1px solid lightgray;padding:0px 5px;border-radius: 3px;color: #666;cursor:pointer}

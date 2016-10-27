@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+  <duplication lines="26" tokens="75">
+    <file path="/home/varogonz/Proyecto-Analisis-15cero2/15cero2/controladoras/ActivosController.php" line="37"/>
+    <file path="/home/varogonz/Proyecto-Analisis-15cero2/15cero2/controladoras/ActivosController.php" line="116"/>
+    <codefragment>        $result = $conn-&gt;query($sql);
+        $activos = [];
+        $cont = 0;
+
+        if ($result-&gt;num_rows &gt; 0) {
+            while($row = $result-&gt;fetch_assoc()) {
+                $activos[$cont][0] = $row['Id'];
+                $activos[$cont][1] = $row['Codigo'];
+                $activos[$cont][2] = $row['Id_Categoria'];
+                $activos[$cont][3] = $row['Descripcion'];
+                $activos[$cont][4] = $row['Precio'];
+                $activos[$cont][5] = $row['Estado'];
+                $cont ++;
+            }
+
+            $conn-&gt;close();
+            if(isset($_POST['ajax'])){echo json_encode($activos);}
+            else{return $activos;}
+        }
+        else {
+            if(isset($_POST['ajax'])){echo json_encode($activos);}
+            else{return $activos;}
+        }
+    }
+
+    function editarActivo(){
+</codefragment>
+  </duplication>
+</pmd-cpd>

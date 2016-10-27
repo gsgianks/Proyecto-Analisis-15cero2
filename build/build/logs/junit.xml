@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="pruebaunitaria" file="/home/varogonz/Proyecto-Analisis-15cero2/tests/PruebaUnitaria.php" tests="1" assertions="6" failures="0" errors="0" time="0.194086">
+    <testsuite name="PruebaUnitaria" file="/home/varogonz/Proyecto-Analisis-15cero2/tests/PruebaUnitaria.php" tests="1" assertions="6" failures="0" errors="0" time="0.194086">
+      <testcase name="testPruebaUnitaria" class="PruebaUnitaria" file="/home/varogonz/Proyecto-Analisis-15cero2/tests/PruebaUnitaria.php" line="7" assertions="6" time="0.194086">
+        <system-out>true  resulcall paAdministrarEvento(5,null,'Name',null,null,null,null);Evento Object
+(
+    [id] =&gt; 19
+    [nombre] =&gt; Name
+    [fechaInicio] =&gt; 2016-11-23
+    [fechaFinal] =&gt; 2016-10-23
+    [ubicacion] =&gt; Chepe
+    [idCliente] =&gt; 2
+)
+Objeto $eventoEvento Object
+(
+    [id] =&gt; 0
+    [nombre] =&gt; Name
+    [fechaInicio] =&gt; 2016-11-23
+    [fechaFinal] =&gt; 2016-10-23
+    [ubicacion] =&gt; Chepe
+    [idCliente] =&gt; 2
+)
+Objeto $evenEvento Object
+(
+    [id] =&gt; 19
+    [nombre] =&gt; Name
+    [fechaInicio] =&gt; 2016-11-23
+    [fechaFinal] =&gt; 2016-10-23
+    [ubicacion] =&gt; Chepe
+    [idCliente] =&gt; 2
+)
+call paAdministrarEvento(3,19,'Nuevo nombre','2016-11-23','2016-10-23','Nueva ubicacion',2);call paAdministrarEvento(5,null,'Nuevo nombre',null,null,null,null);Evento Object
+(
+    [id] =&gt; 19
+    [nombre] =&gt; Nuevo nombre
+    [fechaInicio] =&gt; 2016-11-23
+    [fechaFinal] =&gt; 2016-10-23
+    [ubicacion] =&gt; Nueva ubicacion
+    [idCliente] =&gt; 2
+)
+</system-out>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

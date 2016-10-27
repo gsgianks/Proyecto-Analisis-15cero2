@@ -1,0 +1,17 @@
+#factura{border: 1px solid black;width: 680px;margin: auto;background: lightgray;}
+
+header{border: 1px solid red;overflow: hidden;}
+h4,h5{float: left;margin: 5px;margin-right: 10px;}
+.div-header{height: 25px;overflow: hidden;}
+#num-factura{float: right;}
+
+section{border: 2px solid blue;overflow: hidden;}
+section>.div-button>button{margin-top: 20px; height: 30px; border-radius: 5px; border: 2px solid black;}
+section>.div-button>button:hover{background: black;color: white;transition: 1s;}
+#tablaFactura{float: left;}
+table {text-align:center; width: 76%;float: left;}
+
+.div-button{float: right;border: 1px solid green;height: 150px;width: 23%; text-align: center;margin-top: 40px;}
+
+table>tbody>tr:nth-child(1){background: bisque;}
+table>tbody>tr:nth-last-child(1){background: green;}
