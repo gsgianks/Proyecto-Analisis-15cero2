@@ -15,7 +15,7 @@
 			$evento->fechaInicio = "2016-11-23";
 			$evento->fechaFinal = "2016-10-23";
 			$evento->ubicacion = "Chepe";
-			$evento->idCliente = 2;
+			$evento->idCliente = 0;
 
 			//inserta el evento
 			$this->assertEquals('true',$eventodata->insertarEvento($evento));
