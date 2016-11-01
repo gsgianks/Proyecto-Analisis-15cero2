@@ -11,7 +11,7 @@
         <title>15cero2 Eventos</title>
     </head>
 
-    <body>
+    <body>  
         <!--
             1- Cargar categorias.
             2- Cargar todos los activos por defecto
