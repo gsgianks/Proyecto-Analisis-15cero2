@@ -10,7 +10,7 @@
         <script type="text/javascript" src="./js/jquery.min.js"></script>
         <script type="text/javascript" src="./js/login.js"></script>
 
-        <title>15cero2 Iniciar sesión</title>
+        <title>15 C E R O 2 Iniciar sesión</title>
     </head>
     <body>
         <div class="container main">
