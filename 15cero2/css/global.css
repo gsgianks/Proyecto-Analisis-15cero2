@@ -10,7 +10,7 @@ header,section,footer,nav,a,input{display: block}
 hr{border: none;height: 1px;background: #aaa}
 
 /*More specific elements*/
-.main_content{margin-top: 3.2em;overflow: hidden;width: 95%;margin: auto;background: white;box-shadow: 0 0 6px 2px grey;position: relative; top: 2.5em;}
+.main_content{margin-top: 3.2em;overflow: hidden;width: 95%;margin: auto;background: white;box-shadow: 0 0 6px 2px grey;position: relative; top: 2.5em;height: 100vh}
 
 .form-group{margin: 1em 0}
 .form-control{height: 35px;border-radius: 3px;border: 1px solid lightgrey;text-indent: 1em; width:100%;margin:.5em 0;background:white}
