@@ -40,9 +40,15 @@ $(document).ready(function () {
            // alert(datas.consulta +"  -  "+datas.identificador+"   -    "+datas.categoria);
             ajax('controladoras/ActivosController.php', datas);
         }
-    });   
+    });
+    $("#activos").change(function(){
+        //alert("cambio");
+        var data = {consulta : 'cantidadActivos',codigo : $('#activos').val()};
+        ajax('controladoras/controladora_evento_activo.php',data);
+    });
 });
 function ajax(urll, datas){
+    //alert(urll+"uusgdbjsdkbvisdkavbn");
     $.ajax({
             url: urll,
             type: 'post',
@@ -61,11 +67,17 @@ function ajax(urll, datas){
                     respEliminarEvento(resp.Success,resp.Evento);
                 }else if(resp.Type === 'eliminarCliente'){
                     respEliminarCliente(resp.Success,resp.Cliente);
-                }
+                }else if(resp.Type === 'cantidadActivos'){
+                    //alert("cantidadActivos "+resp.cantidad);
+                    $('#cantidad_maxima').text(resp.cantidad);
+                }/*else if(resp.Type === 'cargarEvento'){
+                    alert("evento recuperado");
+                    respCargarEvento(resp.Success, resp.Evento, resp.Nombre, resp.FechaIni, resp.FechaFin,resp.Cliente,resp.Ubicacion,resp.nombreCliente);
+                }*/
                
             },
             error: function (jqXHR, estado, error) {
-                alert('error log');
+                alert('error varo gay');
                 console.log("fallo");
             }
     });
@@ -85,6 +97,9 @@ function selectPorCategoria(success, activos){
         for(i = 0;i<activos.length;i++){                
             $('#activos').append("<option value='"+activos[i][1]+"'>"+activos[i][3]+"</option>");
         }
+        var data = {consulta : 'cantidadActivos',codigo : activos[0][1]};
+        ajax('controladoras/controladora_evento_activo.php',data);
+
     }else{
         $('#activos').append("<option value='0'>No hay resultados sirve prueba</option>");
     }
@@ -331,3 +346,17 @@ function respEliminarCliente(success,idCliente){
         alert("ERROR: algo ocurrio");
     }
 }
+
+//metodo para cargar los datos del evento en el informe a traves de ajax
+function cargarEvento(id_even){
+    alert("evento: "+id_even);
+     window.location = 'informe_evento.php?e='+id_even;
+    /*var data = {consulta : 'seleccionarEvento',id_event : id_even};    
+    ajax('controladoras/controladora_evento.php',data);*/
+}
+
+//metodo para mostrar los datos del evento consultado para el informe
+/*function repCargarEvento(success, evento, Nombre, fechaIni, fechaFin,cliente,ubicacion,nombreCliente){
+    var data = {consulta: 'seleccionarActivosEventos', id:ide};
+    ajax('controladoras/controladora_evento_activo.php',data);
+}*/

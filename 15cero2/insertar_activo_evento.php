@@ -35,7 +35,8 @@
 				<option value="0">-- No hay activos --</option>
 			</select><br>
 			<label>Cantidad:</label><br>
-			<input type="number" name="cantidad" required><br>
+			<input id="cantidad_activos" type="number" name="cantidad" required><br>
+			Disponibles: <label style="color: blue;" id="cantidad_maxima"></label><br>
 			<input class="submit" type="submit" value="Agregar">
 		</form>
 		</div>

@@ -6,13 +6,15 @@ $(document).ready(function () {
     $('form').submit(function (e) {
 
         e.preventDefault();
+
        
         var data = $(this).serializeArray();
         var url = $(this).attr("action");
 
-       // alert(url);
+        if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
+            alert("magia maagia "+$(this).children('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
+        }
 
-        //alert($(this).children("#tipo").val());
         $.ajax({
             url: url,
             type: 'post',
@@ -162,7 +164,7 @@ function respCliente(success, id,nombre,correo,telefono,direccion){
 
 function respModificarCliente(success, idCliente, nombre,correo, telefono, direccion){
     if (success === true) {
-        alertify.notify('Cliente Modificado', 'success', 5);
+        //alertify.notify('Cliente Modificado', 'success', 5); **********************////////////////////////*******************
         $("#table-clientes tbody tr").each(function (index) 
             {
                 $(this).children("td").each(function (index2) 

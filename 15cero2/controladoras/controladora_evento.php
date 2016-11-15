@@ -17,6 +17,11 @@ require_once ("database.php");
                 modificarEvento();
                 break;
             }
+            /*
+            case 'seleccionarEvento': //listo
+                seleccionarEvento();
+                break;
+            */
 		}
 
 	function agregarEvento(){
@@ -104,4 +109,54 @@ require_once ("database.php");
         echo json_encode($jsond);
         exit();
     }
+
+    function seleccionarEvento($id){
+        $conn = getConnection();
+        $sql = "call paAdministrarEvento(5,".$id.",null,null,null,null,null);";
+        $result = $conn->query($sql);
+        $eventos = null;
+        $cont = 0;
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $eventos[$cont][1] = $row['Nombre'];
+                $eventos[$cont][2] = $row['FechaInicio'];
+                $eventos[$cont][3] = $row['FechaFinal'];
+                $eventos[$cont][4] = $row['Ubicacion'];
+                $eventos[$cont][6] = $row['NombreCli'];
+                $cont ++;
+            }
+        } else {
+            echo "no hay";
+        }
+        $conn->close();
+        return $eventos;
+    }
+    /*
+    function seleccionarEvento(){
+        $conn = getConnection();
+        $sql = "call paAdministrarEvento(".$_POST['id_event'].",null,null,null,null,null,null);";
+        $result = $conn->query($sql);
+        $eventos = null;
+        $cont = 0;
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $jsond['Type'] = 'cargarEvento';
+                $jsond['Success'] = true;     
+                $jsond['Evento'] = $row['Id'];
+                $jsond['Nombre'] = $row['Nombre'];
+                $jsond['FechaIni'] = $row['FechaInicio'];
+                $jsond['FechaFin'] = $row['FechaFinal'];
+                $jsond['Cliente'] = $row['Id_Cliente'];
+                $jsond['Ubicacion'] = $row['Ubicacion'];
+                $jsond['nombreCliente'] = $row['NombreCli'];;
+            }
+        } else {
+            $jsond['Type'] = 'cargarEvento';
+            $jsond['Success'] = false;  
+        }
+        $conn->close();
+        header('Content-type: application/json; charset=utf-8');
+        echo json_encode($jsond);
+        exit();
+    }*/
 ?>

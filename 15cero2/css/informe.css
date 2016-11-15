@@ -1,0 +1,10 @@
+.main_content {
+	margin-top: 3.2em;
+	overflow: hidden;
+	width: 95%;
+	margin: auto;
+	background: white;
+	position: relative;
+	top: 2.5em;
+}
+body{background:  #929292;}
