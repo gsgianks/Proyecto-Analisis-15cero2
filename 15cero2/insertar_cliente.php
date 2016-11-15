@@ -14,7 +14,7 @@
 
 	<?php include "_nav.php" ?>
 
-	<div class="container">
+	<div class="main_content">
 		<aside>
 			<section class="formulario">
 				<h1>Insertar Cliente</h1>
@@ -32,7 +32,7 @@
 		</aside>
 		<section class="lista-clientes">
         <h3>Clientes registados</h3>
-            <?php require_once 'controladoras/controladora_cliente.php'; $clientes = cargarClientes(); 
+            <?php require_once 'controladoras/controladora_cliente.php'; $clientes = cargarClientes();
             if($clientes != null){?>
                 <table id="table-clientes" border="2">
                 <tr>
@@ -44,13 +44,13 @@
                 </tr>
                 <?php for($i = 0;$i<count($clientes);$i++){?>
                     <tr class="opciones">
-                        <td style='display: none;'><?php echo $clientes[$i][0]; ?></td>                  
+                        <td style='display: none;'><?php echo $clientes[$i][0]; ?></td>
                         <td><?php echo $clientes[$i][1]; ?></td>
                         <td><?php echo $clientes[$i][2]; ?></td>
                         <td><?php echo $clientes[$i][3]; ?></td>
                         <td><?php echo $clientes[$i][4]; ?></td>
                         <td><button style="color: black;" onclick="modificarCliente(<?php echo $clientes[$i][0]; ?>);">Modificar</button><button style="color: black;" onclick="eliminarCliente(<?php echo $clientes[$i][0]; ?>);">Eliminar</button></td>
-                    </tr> 
+                    </tr>
 
                 <?php }?>
                 </table>
@@ -60,9 +60,9 @@
                 <p>No hay clientes registrados</p>
 
             <?php }?>
-            
+
     </section>
-  </div>		
+  </div>
 	</div>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>

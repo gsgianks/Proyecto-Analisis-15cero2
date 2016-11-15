@@ -15,7 +15,7 @@
 </head>
 <body>
 	<?php include "_nav.php" ?>
-	<div class="container">
+	<div class="main_content">
 		<h3 id="Event">Nombre evento:<?php echo $_GET['n'] ?></h3>
 		<div class="lista-activos">
 		<form action="controladoras/controladora_evento_activo.php" method="post">
@@ -25,7 +25,7 @@
 	        <label>Categorias:</label><br>
 	        <select id="categorias" name="categoria">
 	        	<option value="0">--Seleccione--</option>
-	        	<?php require_once 'controladoras/controladora_categoria.php'; $Categorias = cargarCategorias2(); 
+	        	<?php require_once 'controladoras/controladora_categoria.php'; $Categorias = cargarCategorias2();
 				for($i = 0; $i<count($Categorias);$i++){ ?>
 					<option value="<?php echo $Categorias[$i][0]?>"><?php echo $Categorias[$i][1]?></option>
 				<?php } ?>
@@ -33,13 +33,13 @@
 	        <label>Activo: </label><br>
 			<select id="activos" name="activo">
 				<option value="0">-- No hay activos --</option>
-			</select><br>	
+			</select><br>
 			<label>Cantidad:</label><br>
 			<input type="number" name="cantidad" required><br>
 			<input class="submit" type="submit" value="Agregar">
 		</form>
 		</div>
-		
+
 		<div class="activos-necesarios">
 			<?php require_once 'controladoras/controladora_evento_activo.php'; $eventos = seleccionarActivosEventosArray($_GET["e"]);
 			if($eventos != null){ ?>
@@ -56,11 +56,11 @@
 		                	<td><?php echo $eventos[$i][2]; ?></td>
 		                    <td><?php echo $eventos[$i][0]; ?></td>
 		                    <td><?php echo $eventos[$i][1]; ?></td>
-		                    <td><button style="color: black;" name="<?php echo $eventos[$i][2]; ?>" onClick="eliminarActivoEvento(this)">Eliminar</button></td>                
-	                	</tr> 
-	            
+		                    <td><button style="color: black;" name="<?php echo $eventos[$i][2]; ?>" onClick="eliminarActivoEvento(this)">Eliminar</button></td>
+	                	</tr>
+
             		<?php } ?>
-            	</table>  
+            	</table>
 
 
 			<?php }else{ ?>
@@ -70,11 +70,11 @@
 
 
 			<?php } ?>
-			
-			
+
+
 		</div>
-			
-		
+
+
 	</div>
 </body>
 </html>
