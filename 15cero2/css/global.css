@@ -3,21 +3,20 @@
 @import url('https://fonts.googleapis.com/css?family=Metrophobic');
 
 *{margin:0;padding:0}
-body{font-family: 'Lato', sans-serif;font-weight: 300;font-size: large}
+body{font-family: 'Lato', sans-serif;font-weight: 300;font-size: large;background: lightgrey}
 
 /*Less specific elements*/
 header,section,footer,nav,a,input{display: block}
 hr{border: none;height: 1px;background: #aaa}
 
 /*More specific elements*/
-.main_content{margin-top: 3.2em;overflow: hidden}
+.main_content{margin-top: 3.2em;overflow: hidden;width: 95%;margin: auto;background: white;box-shadow: 0 0 6px 2px grey;position: relative; top: 2.5em;}
 
 .form-group{margin: 1em 0}
 .form-control{height: 35px;border-radius: 3px;border: 1px solid lightgrey;text-indent: 1em; width:100%;margin:.5em 0;background:white}
 .form-control:focus{box-shadow:0 0 2px 1px #9FBFFF;}
 button.btn.btn-primary{margin: auto;width: 100%;background: #5278C4;border: none; padding: .5em 0;color:white;border-radius: 3px}
 
-.top-vav{position: fixed;width: 100%;top:0;padding: .5em;border-bottom: 1px solid lightgrey;background:#f6921e;}
-.top-vav .nav-content{overflow: hidden;width: 70%;margin: auto}
-.nav-item{display: block;float: left;padding: .5em 2.5em;}
-.top-vav a{text-decoration: none;cursor:pointer;font-family:'metrophobic'; font-size: 400;color: white}
+.top-vav{position: fixed;width: 100%;top:0;border-bottom: 1px solid lightgrey;background:#f6921e;z-index: 100}
+.top-vav .nav-content{overflow: hidden;display: flex;justify-content: space-around;padding: .7em 2em}
+.top-vav a{text-decoration: none;cursor:pointer; font-family: 'metrophobic';font-size: 400;color: white;}

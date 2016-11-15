@@ -13,9 +13,12 @@ $(document).ready(function () {
             data: data,
             success: function (resp) {
                 if (resp.success === true) {
-
-       				window.location = "home.php";
-                } else {
+                    $('.login-section').fadeOut(500,function(){
+                        $('.login-section').remove();
+                        $('.links').css('height','2.5em');
+                    });
+                }
+                else {
        //             alert(resp.rol);
                     $("#mensaje").html("*Usuario y/o contraseña incorrectos");
                 }

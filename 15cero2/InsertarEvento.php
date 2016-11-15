@@ -23,11 +23,11 @@
  ?>
 
 <?php include "_nav.php" ?>
-  <div class="container">
+  <div class="main_content">
  <aside>
     <section class="formulario">
     <h1>Insertar Evento</h1>
-   
+
         <form action="controladoras/controladora_evento.php" method="post">
             <input type="hidden" name="consulta" value="agregarEvento">
             <label >Nombre Evento:</label><input type="text" name="nombreEven" required>
@@ -58,7 +58,7 @@
                 <input class="submit" type="submit" value="Agregar">
             </form>
         </section>
-      
+
   </aside>
     <section class="lista-eventos">
         <h3>Eventos</h3>
@@ -75,11 +75,11 @@
             <?php require_once 'controladoras/controladora_evento.php'; $eventos = seleccionarEventos();
             for($i = 0;$i<count($eventos);$i++){?>
                 <tr class="opciones">
-                    <td style='display: none;'><?php echo $eventos[$i][0]; ?></td>                  
+                    <td style='display: none;'><?php echo $eventos[$i][0]; ?></td>
                     <td><?php echo $eventos[$i][1]; ?></td>
                     <td><?php echo $eventos[$i][2]; ?></td>
                     <td><?php echo $eventos[$i][3]; ?></td>
-                    <td><?php echo $eventos[$i][4]; ?></td>                    
+                    <td><?php echo $eventos[$i][4]; ?></td>
                     <td><?php echo $eventos[$i][6]; ?></td>
                     <!-- <td><button class="id02" onclick="mostrarDetalleEvento(<?php echo $eventos[$i][0] ?>)">Mostrar</button></td> -->
                     <td><ul class="menu-evento">
@@ -92,7 +92,7 @@
                             </li>
                         </ul>
                     </td>
-                </tr>   
+                </tr>
             <?php }?>
     </section>
   </div>
@@ -101,7 +101,7 @@
             <div class="modal-content animate">
                 <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <div class="div-modal2">
-                    
+
                 </div>
             </div>
         </div>
@@ -113,7 +113,7 @@
                 <div class="div-modal3">
                     <section class="formulario">
                     <h1>Modificar Evento</h1>
-               
+
                     <form action="controladoras/controladora_evento.php" method="post">
                         <input type="hidden" name="consulta" value="modificarEvento">
                         <input type="hidden" name="nombreCliente" value="modificarEvento">

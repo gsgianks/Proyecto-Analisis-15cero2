@@ -12,19 +12,24 @@ require_once 'database.php';
     }
 
 function validarLogueo(){
-
+        session_start();
         $conn = getConnection();
         $sql = "call paVerificarLogin('".$_POST['user']."','".$_POST['pass']."');";
         $result = $conn->query($sql);
+        $jsondata = [];
+
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
                 if(($_POST['user'] === $row['Usuario'])&& ($_POST['pass']===$row['Contrasena'])){
                     $jsondata['success'] = true;
-                }else{
+                    $_SESSION['logged']=true;
+                }
+                else{
                     $jsondata['success'] = false;
                 }
             }
-        } else {
+        }
+        else {
             $jsondata['success'] = false;
         }
         $conn->close();
@@ -33,7 +38,7 @@ function validarLogueo(){
         echo json_encode($jsondata);
         exit();
     }
-    
+
 /*
 function validarLogueo(){
 
