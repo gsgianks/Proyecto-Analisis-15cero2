@@ -4,6 +4,7 @@
     <title>Insertar Evento</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/newStyle.css">
+    <link rel="stylesheet" href="css/activos.css">
     <link href="css/prueba.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="js/css/alertify.min.css">
     <link rel="stylesheet" href="js/css/themes/default.min.css">
@@ -24,20 +25,24 @@
 
 <?php include "_nav.php" ?>
   <div class="main_content">
- <aside>
-    <section class="formulario">
+ <aside class="aside-left">
+    <section class="aside-content">
     <h1>Insertar Evento</h1>
 
-        <form action="controladoras/controladora_evento.php" method="post">
+        <form class="formulario" action="controladoras/controladora_evento.php" method="post">
             <input type="hidden" name="consulta" value="agregarEvento">
-            <label >Nombre Evento:</label><input type="text" name="nombreEven" required>
-            <label >Cliente:</label><br>
-            <select id="clientes" name="cliente">
+            <div class="form-group">
+                <label>Nombre Evento:</label><input class="form-control" type="text" name="nombreEven" required>
+            </div>
+            <div class="">
+                <label >Cliente:</label><br>
+                <select id="clientes" name="cliente">
                     <?php   for($i = 0;$i<count($array);$i++){?>
                         <option required value='<?php echo $array[$i][0]?>'><?php echo $array[$i][1]?></option>
-                    <?php }?>
-                    <option value="0">--Agregar Nuevo--</option>
-            </select> <br />
+                        <?php }?>
+                        <option value="0">--Agregar Nuevo--</option>
+                    </select>
+            </div>
             <label >Fecha Inicio:</label><input type="date" name="fechaIni" placeholder="yyyy-MM-dd" required>
             <label >Fecha Final:</label><input type="date" name="fechaFin" placeholder="yyyy-MM-dd"required>
             <label >Ubicación:</label><input type="text" name="ubicacion" required>

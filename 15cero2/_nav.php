@@ -2,10 +2,10 @@
 <nav class="top-vav">
     <div class="nav-content">
         <a class="left" href="index.php">15 C E R O 2</a>
-        <a href="activos.php">Activos</a>
-        <a href="bodega.php">Bodega</a>
         <a href="InsertarEvento.php">Eventos</a>
         <a href="insertar_cliente.php">Clientes</a>
+        <a href="activos.php">Activos</a>
+        <a href="bodega.php">Bodega</a>
     </div>
 
     <?php if(isset($_GET['msg'])){
