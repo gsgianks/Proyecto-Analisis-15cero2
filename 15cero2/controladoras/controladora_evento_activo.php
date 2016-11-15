@@ -12,7 +12,11 @@ require_once ("database.php");
                 break;
             case 'seleccionarActivosEventos': //listo
                 seleccionarActivosEventos();
-                break;                
+                break;
+            case 'cantidadActivos': //listo
+                cantidadActivos();
+                break;   
+                             
             }
         }
 
@@ -87,6 +91,47 @@ function seleccionarActivosEventos(){
                 $activos[$cont][0] = $row['Descripcion'];
                 $activos[$cont][1] = $row['Cantidad'];
                 $activos[$cont][2] = $row['Codigo'];
+                $cont ++;
+            }
+        }
+        return $activos;
+        exit();
+    }
+    function cantidadActivos(){
+        $conn = getConnection();
+        $sql = "select cantidad from tbbodega where codigo = '".$_POST['codigo']."'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $json['cantidad'] = $row['cantidad'];
+            }
+            $json['Success'] = true;
+
+        }
+        //$json['cantidad'] =$_POST['codigo'];
+        $json['Type'] = 'cantidadActivos';
+        $conn->close();
+        header('Content-type: application/json; charset=utf-8');
+        echo json_encode($json);
+        exit();
+       /* $json['cantidad'] = 7;
+        $json['Success'] = true;
+        $json['Type'] = 'cantidadActivos';
+        header('Content-type: application/json; charset=utf-8');
+        echo json_encode($json);*/
+    }
+
+    function seleccionarActivosEventosInforme($id){
+        $conn = getConnection();
+        $sql = "call paAdministrarEven_Art(5,null,".$id.",null);";
+        $result = $conn->query($sql);
+        $activos = null;
+        $cont = 0;
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                $activos[$cont][0] = $row['Codigo'];
+                $activos[$cont][1] = $row['Descripcion'];
+                $activos[$cont][2] = $row['Precio'];
                 $cont ++;
             }
         }
