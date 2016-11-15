@@ -1,4 +1,4 @@
-aside.aside-left{float: left;height: 100vh;border-right:1px solid lightgrey;padding:1em;width:15%;}
+aside.aside-left{float: left;height: 90vh;border-right:1px solid lightgrey;padding:1em;width:15%;}
 .aside-left a{color:#f6921e;text-decoration:none;}
 .aside-left,.aside-left>h3{font-size: medium;padding: .5em .2em}
 .aside-left >ul{width: 100%;overflow: hidden;padding: .5em}
