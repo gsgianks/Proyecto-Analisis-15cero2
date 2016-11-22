@@ -83,7 +83,7 @@
                                     <th>Cod.</th>
                                     <th>Descripcion</th>
                                     <th>Precio</th>
-                                    <th>Accion</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,8 +96,15 @@
                                     <td><?php echo $activos[$i][3]; ?></td>
                                     <td><?php echo $activos[$i][4]; ?></td>
                                     <td>
-                                        <a href="#" onclick="showEditActive('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][3]; ?>','<?php echo $activos[$i][4]; ?>')">Editar</a>
-                                        <a href="#" onclick="eliminarActivo(<?php echo $activos[$i][0]; ?>,this)">Eliminar</a>
+                                        <ul class="options">
+                                            <li>
+                                                Opciones
+                                                <ul>
+                                                    <li><button onclick="showEditActive('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][3]; ?>','<?php echo $activos[$i][4]; ?>')">Editar</button></li>
+                                                    <li><button onclick="eliminarActivo(<?php echo $activos[$i][0]; ?>,this)">Modificar</button></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
                                     </td>
                                 </tr><?php } } else {echo "No hay activos en este momento";} ?>
                             </tbody>

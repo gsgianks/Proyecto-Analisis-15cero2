@@ -1,34 +1,20 @@
-#Name-Event{margin-top: 5%;}
+aside.aside-left{float: left;border-right:1px solid lightgrey;padding:1em;width:15%;}
+.aside-left a{color:#f6921e;text-decoration:none;}
+.aside-left,.aside-left>h3{font-size: medium;padding: .5em .2em}
+.aside-content{margin: 2em auto}
+.formulario > .btn{width: 100%}
 
-.container{overflow: hidden;width: 100%;margin-top: 5%;}
-.formulario{float: left;border: 1px solid black;width: 45%;margin-left: 20%;margin-bottom: 30px;}
-.formulario-cliente{float: left;border: 1px solid black;margin-left: 20%;margin-bottom: 30px;}
-aside{overflow: hidden;float:left;/*border: 2px solid green; */width: 45%;}
-/* ultimos cambios*/
 .div-modal3{overflow: hidden;border: 2px solid green;width: 100%;}
-.lista-eventos{margin-right: 3%; float: right; /*cambiar*/}
-.lista-clientes{margin-right:10%; float: right; /*cambiar*/}
 
-.formulario>form>select, .formulario-cliente>form>select, .div-modal3>.formulario>select {
-  height: 25px;width: 200px;text-align: center;margin-left: 10%;}
-.formulario>form>input, .formulario-cliente>form>input, .div-modal3>.formulario>input{
-  height: 25px;width: 200px;margin-left: 10%;}
-.formulario>form>label, .formulario-cliente>form>label, .div-modal3>.formulario>label{ margin-left: 12%;}
-.formulario>h1,.formulario-cliente>h1 { margin-left: 10%; margin-bottom: 4%;}
+.lista-eventos{float: left;padding:1em 2em;width: 75%}
 
-.submit{ margin: 3%;border-radius: 5px;}
-.submit:hover{background: lightblue;}
-
-table>tbody>tr:nth-child(1){background: gray;color:#FFF;font-size: 19px;}
-tr:nth-child(odd){background: lightgray;color: #000000;font-size: 16px;}
-tr:nth-child(even){background: #FFFFFF;color: #000000;}
-table{width: 55%;margin:4em auto}
-table a{text-align: right;font-size:small}
+table{margin:2em auto}
+table>thead>tr{background: gray;color:#FFF;font-size: initial;}
 table{width: 100%;border-collapse: collapse}
-table tbody td,.table tbody td a{text-align: center;font-size: medium}
+table tbody td{text-align: center;font-size: medium}
 table tbody tr{border: 1px solid lightgray}
-table td,table th{padding: .8em}
-table tr:hover{background: #f4f4f4}
+table td, table th{padding: .8em}
+table>tbody>tr:hover{background: #f4f4f4}
 
 .lista-activos{width: 20%;float: left;border: 1px solid green;margin-left: 15%;}
 .activos-necesarios{text-align: center;width: 30%;float: right;/*border: 1px solid green;*/margin-right: 10%;}
@@ -42,12 +28,10 @@ table tr:hover{background: #f4f4f4}
 #table-activos{width: 50%;margin-left: 25%;}
 
 ul, ol {list-style:none;}
-			
-.menu-evento>li {float:left;}	
-.menu-evento li{ background-color:#000; color:#fff; text-decoration:none; padding:3px 8px;display:block;font-size: 17px;}
-.menu-evento li button:hover {background-color: green;}
-.menu-evento li ul {display:none;position:absolute;}
-.menu-evento li:hover{background: green;}
-.menu-evento li:hover > ul {display:block;margin-left: -60px;}
 
-button{width: 70px;background-color: transparent;color: #fff;height: 25px;border: none;}
+.menu-evento>li {width: 60%;margin: auto}
+.menu-evento li{ background-color:#444; color:#fff; text-decoration:none; padding:3px 8px;font-size: 17px;transition:.3s}
+.menu-evento li ul {display:none;position:absolute;}
+.menu-evento li:hover{background: darkorange;transition:.3s}
+.menu-evento li:hover > ul {display:block;margin-left: -60px;}
+.menu-evento button{width: 70px;background-color: transparent;color: #fff;height: 25px;border: none;}

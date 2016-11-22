@@ -13,13 +13,24 @@ aside.aside-left{float: left;height: 90vh;border-right:1px solid lightgrey;paddi
 .table-stock-container{width: 80%;margin:1em .5em;float: left;}
 .table-stock-container .btn{background: lightgreen;color: white;border-radius: 6px;padding:.5em 1em;border: none;}
 .table-stock-container .btn:active{background: green;color: lightgrey;}
-.table-stock-container .btn >span{padding-right: 8px;font-weight:600;}
-table.table-stock{width: 100%;border-collapse: collapse}
-.table-stock tbody td,.table-stock tbody td a{text-align: center;font-size: medium}
-.table-stock tbody tr{border: 1px solid lightgray}
-.table-stock td,table th{padding: .8em}
-.table-stock tbody>tr:hover{background: #f4f4f4}
+.table-stock-container .btn >span{transition: .3s;padding-right: 2px;width: 0;display: inline-block;overflow: hidden;height: 0;font-weight:600;margin: auto;vertical-align: bottom}
+.table-stock-container .btn:hover >span{padding-right: 8px;width: initial;height: initial;transition: .3s}
 
+table{margin:2em auto}
+table>thead>tr{background: gray;color:#FFF;font-size: initial;}
+table{width: 100%;border-collapse: collapse}
+table tbody td{text-align: center;font-size: medium}
+table tbody tr{border: 1px solid lightgray}
+table td,table th{padding: .8em}
+table>tbody>tr:hover{background: #f4f4f4}
+
+ul{list-style: none}
+.options>li {width: 60%;margin: auto}
+.options li{ background-color:#444; color:#fff; text-decoration:none; padding:3px 8px;font-size: 17px;transition:.3s}
+.options li ul {display:none;position:absolute;}
+.options li:hover{background: darkorange;transition:.3s}
+.options li:hover > ul {display:block;margin-left: -60px;}
+.options button{width: 70px;background-color: transparent;color: #fff;height: 25px;border: none;}
 
 .activo-form{width: 300px;margin: auto 3em;padding: .5em;border: 1px solid lightgray;background: #eee;color: grey;float:left}
 .activo-form form{width: 90%;margin: auto}
