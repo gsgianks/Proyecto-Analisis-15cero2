@@ -91,7 +91,7 @@
                                     $activos=seleccionarActivos(1,0);
                                     if(!empty($activos)){
                                     for ($i=0; $i < count($activos); $i++) { ?>
-                                <tr>
+                                <tr id="<?php echo $activos[$i][0]; ?>">
                                     <td><?php echo $activos[$i][1]; ?></td>
                                     <td><?php echo $activos[$i][3]; ?></td>
                                     <td><?php echo $activos[$i][4]; ?></td>
@@ -101,7 +101,7 @@
                                                 Opciones
                                                 <ul>
                                                     <li><button onclick="showEditActive('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][3]; ?>','<?php echo $activos[$i][4]; ?>')">Editar</button></li>
-                                                    <li><button onclick="eliminarActivo(<?php echo $activos[$i][0]; ?>,this)">Modificar</button></li>
+                                                    <li><button onclick="eliminarActivo(<?php echo $activos[$i][0]; ?>)">Eliminar</button></li>
                                                 </ul>
                                             </li>
                                         </ul>

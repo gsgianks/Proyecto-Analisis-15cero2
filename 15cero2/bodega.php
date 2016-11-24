@@ -31,22 +31,18 @@
                     <form>
                         <div class="form-group">
                             <input name="search" type="search" class="form-control" placeholder="Código...">
-                            <button class="btn" type="button">Buscar</button>
+                            <button class="btn btn-primary" type="button">Buscar</button>
                         </div>
                     </form>
                     <hr style="margin-top:.5em">
                     <h3>Bodega</h3>
                     <hr>
-                    <!--<a href="#" onclick="showAddCategory()" style="padding:.5em">Agregar categoria</a>
-                    <hr>-->
                     <ul class="lead">
                         <li>Bodega Principal</li>
                     </ul>
                     <hr style="margin-top:.5em">
                     <h3>Bodegas por evento</h3>
                     <hr>
-                    <!--<a href="#" onclick="showAddCategory()" style="padding:.5em">Agregar categoria</a>
-                    <hr>-->
                     <ul class="lead">
                         <li>Nombre evento 1</li>
                         <li>Nombre evento 2</li>
@@ -56,23 +52,16 @@
 
                 <div class="table-stock-container">
                     <!--<a href="#" onclick="showAddActive()">Agregar nuevo activo</a>-->
-                    <table class="table-stock">
+                    <table class="table-warehouse">
                         <thead>
                             <tr>
                                 <th>Código</th>
-                                <th>Total</th>
                                 <th>Disponible/s</th>
-                                <th>No disponible/s</th>
+                                <th>Reservado/s</th>
+                                <th></th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td><?php echo 'Prueba'; ?></td>
-                                <td><?php echo '100'; ?></td>
-                                <td><?php echo '32'; ?></td>
-                                <td><?php echo '68'; ?></td>
-                                <td><?php echo 'Desgloce'; ?></td>
-                            </tr>
+                        <tbody class="replaceable">
                         </tbody>
                     </table>
                 </div>

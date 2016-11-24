@@ -107,7 +107,7 @@ function eliminarCategoria(_id,e,str){
     );
 }
 
-function eliminarActivo(_id,e){
+function eliminarActivo(_id){
     alertify.confirm(
         "Eliminar Activo",
         "¿Realmente desea eliminar este activo?",
@@ -119,7 +119,7 @@ function eliminarActivo(_id,e){
                 dataType:'json',
                 success:function(resp){
                     if(resp.msg==='true'){
-                        $(e).parent().parent().fadeOut(1000);
+                        $('#'+_id).fadeOut(1000);
                         alertify.notify("Activo Eliminado","success",3);
                     }
                     else {alertify.notify("Ocurrió un error en la operación","error",3);}
