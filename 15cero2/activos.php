@@ -115,7 +115,7 @@
                     <!--------------------------------------------------------------------------------------->
                     <!--------------------------------------------------------------------------------------->
 
-                      <!--  FORMULARIO AGREGAR ACTIVO -->
+                      <!--  FORMULARIO AGREGAR ACTIVO 
                     <div class="activo-form form agregar-activo">
                         <form class="agregar-activo" action="controladoras/ActivosController.php" method="post">
                             <input type="hidden" name="consulta" value="agregarActivo">
@@ -142,9 +142,9 @@
                                 <label for="categorias">Categoría</label>
                                 <select class="form-control" id="categorias-add" name="categoria" onchange="cambiarSubcategorias($(this).val(),$('select#subcategorias-add'))" required>
                                     <option value="addNew">-Agregar nueva categoria-</option>
-                                    <?php foreach (cargarCategorias() as $categoria) { ?>
-                                        <option value="<?php echo $categoria[0] ?>" ><?php echo $categoria[1]; ?></option>
-                                    <?php } ?>
+                                    <?php //foreach (cargarCategorias() as $categoria) { ?>
+                                        <option value="<?php //echo $categoria[0] ?>" ><?php //echo $categoria[1]; ?></option>
+                                    <?php //} ?>
                                 </select>
 
                                 <label for="subcategorias">Subcategoría</label>
@@ -153,6 +153,7 @@
                             <button class="btn btn-primary" type="submit" >Agregar</button>
                         </form>
                     </div>
+                    -->
                     <!----------------------------------------------------------------------->
                     <!----------------------------------------------------------------------->
 
@@ -211,6 +212,7 @@
             <div class="modal-content animate">
                 <span onclick="document.getElementById('id-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <div class="div-modal-activo">
+                <h1>Agregar Activo</h1>
                     <div class="activo-form form agregar-activo">
                         <form class="agregar-activo" action="controladoras/ActivosController.php" method="post">
                             <input type="hidden" name="consulta" value="agregarActivo">

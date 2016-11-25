@@ -181,7 +181,7 @@
                     <div class="modal-content animate">
                         <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
                         <div class="div-modal4">
-                                <h1>Insertar Cliente</h1>
+                                <h3>Insertar Cliente</h3>
                                 <form class="formulario" action="controladoras/controladora_cliente.php" method="post">
                                     <input type="hidden" name="consulta" value="agregarCliente">
                                     <input type="hidden" name="donde" value="nada">

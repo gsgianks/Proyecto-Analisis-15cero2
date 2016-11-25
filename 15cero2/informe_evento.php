@@ -12,13 +12,17 @@
 <div class="main_content">
 
 <?php
+date_default_timezone_set("America/Costa_Rica");
 $hoy = getdate();
-//print_r($hoy);
 ?>
 
 
 	<?php require_once 'controladoras/controladora_evento.php'; $eventos = seleccionarEvento($_GET['e']); ?>
-            	<p>Nombre: <?php echo $eventos[0][1]; ?></p>
+				<h3>15cero2</h3>
+				<p>Fecha: <?php echo $hoy['mday']."/".$hoy['mon']."/".$hoy['year'];?></p>
+            	<hr>
+            	<div><h1>Nombre: <?php echo $eventos[0][1]; ?></h1></div>
+            	<hr>
             	<p>Fecha Inicio: <?php echo $eventos[0][2]; ?></p>
             	<p>Fecha Final: <?php echo $eventos[0][3]; ?></p>
             	<p>Ubicacion: <?php echo $eventos[0][4]; ?></p>
