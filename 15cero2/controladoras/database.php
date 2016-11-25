@@ -3,7 +3,7 @@
 function getConnection(){
     $servername = "localhost";
     $username = "root";
-    $password = "root";
+    $password = "";
     $dbname = "db15cero2";
 
     // Create connection
