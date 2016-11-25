@@ -1,11 +1,6 @@
 /* Set a style for all buttons */
-.modal button {
-    background-color: #4CAF50;
-    color: white;
-    margin: 8px 35% 10px;
-    border: none;
-    cursor: pointer;
-    width: 30%;
+.modal button{
+    margin-bottom: 4%;
 }
 
 /* Change styles for span and cancel button on extra small screens */
@@ -41,7 +36,8 @@
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
     margin-left: 25%;
-    margin-top: 70px
+    margin-top: 10px;
+    border-radius: 6px;
     
 }
 

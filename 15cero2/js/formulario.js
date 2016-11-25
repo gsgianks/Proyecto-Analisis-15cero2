@@ -50,10 +50,11 @@ function clienteDesdeEnvento(success,id,name){
         if(success === true){
             alertify.notify('Cliente Insertado', 'success', 5);
             $('#clientes').append("<option value="+id+" selected='selected'>"+name+"</option>");
-            $('#clienteNuevo input[type=text]').val('');
-            $('#clienteNuevo input[type=email]').val('');
-            $("#clienteNuevo").css("display", "none"); 
-            $(".formulario").css("margin-left","20%");  
+            $('.div-modal4 input[type=text]').val('');
+            $('.div-modal4 input[type=email]').val('');
+            //$("#clienteNuevo").css("display", "none"); 
+            //$(".formulario").css("margin-left","20%");  
+            $('#id04').css("display", "none");
         }else{
             // aqui va el msj en alguna etiqueta
             alert("ERROR - algo ocurrio");
@@ -148,12 +149,10 @@ function respCliente(success, id,nombre,correo,telefono,direccion){
         $('.formulario input[type=email]').val('');
         if($('#table-clientes').length=== 0){
             //alert('no hay clientes');//$('.activos-necesarios').html('<h3>Activos necesarios</h3><table id="table"><tr><td>Id</td><td>Nombre</td><td>cantidad</td><td>Acci&oacute;n</td></tr><tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr></table>');
-
-
-            $('.lista-clientes').html('<h3>Clientes registrados</h3><table id="table-clientes" border="2"><tr><td>Nombre</td><td>Correo</td><td>Telefono</td><td>Direccion</td><td>Opciones</td></tr><tr><td style="display: none;">'+id+'</td><td>'+nombre+'</td><td>'+correo+'</td><td>'+telefono+'</td><td>'+direccion+'</td><td><button style="color: black;" onclick="modificarCliente('+id+');">Modificar</button><button style="color: black;" onclick="eliminarCliente('+id+');">Eliminar</button></td></tr></table>');
+            $('.lista-clientes').html('<h3>Clientes registrados</h3><table id="table-clientes" border="2"><tr><td>Nombre</td><td>Correo</td><td>Telefono</td><td>Direccion</td><td>Opciones</td></tr><tr><td style="display: none;">'+id+'</td><td>'+nombre+'</td><td>'+correo+'</td><td>'+telefono+'</td><td>'+direccion+'</td><td><ul class="options"><li><p>Opciones</p><ul><li><button onclick="modificarCliente('+id+');">Modificar</button></li><li><button onclick="eliminarCliente('+id+');">Eliminar</button></li></ul></li></ul></td></tr></table>');
 
         }else{
-            $('#table-clientes').append('<tr><td style="display: none;">'+id+'</td><td>'+nombre+'</td><td>'+correo+'</td><td>'+telefono+'</td><td>'+direccion+'</td><td><button style="color: black;" onclick="modificarCliente('+id+');">Modificar</button><button style="color: black;" onclick="eliminarCliente(<?php echo $clientes[$i][0]; ?>);">Eliminar</button></td></tr>');
+            $('#table-clientes').append('<tr><td style="display: none;">'+id+'</td><td>'+nombre+'</td><td>'+correo+'</td><td>'+telefono+'</td><td>'+direccion+'</td><td><ul class="options"><li><p>Opciones</p><ul><li><button onclick="modificarCliente('+id+');">Modificar</button></li><li><button onclick="eliminarCliente('+id+');">Eliminar</button></li></ul></li></ul></td></tr>');
         }
         alertify.notify('Cliente Insertado', 'success', 5);
     }else{

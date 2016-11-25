@@ -4,9 +4,8 @@ aside.aside-left{float: left;border-right:1px solid lightgrey;padding:1em;width:
 .aside-content{margin: 2em auto}
 .formulario > .btn{width: 100%}
 
-.div-modal3{overflow: hidden;border: 2px solid green;width: 100%;}
-
 .lista-eventos{float: left;padding:1em 2em;width: 75%}
+.lista-clientes{float: left;padding:1em 2em;width: 75%}
 
 table{margin:2em auto}
 table>thead>tr{background: gray;color:#FFF;font-size: initial;}
@@ -24,14 +23,10 @@ table>tbody>tr:hover{background: #f4f4f4}
 
 .div-modal>table>tbody>tr{text-align: center;}
 .div-modal2>table{width: 100%;margin-bottom: 20px;}
+.div-modal3{overflow: hidden;width: 100%;}
+.div-modal4{margin: auto; width: 300px;} /*sdbvojsdknm*/
+
+.form-left{float: left; width: 45%; margin-left: 25%;}
+.form-right{float: right; width: 45%; margin-right: 2%;}
 
 #table-activos{width: 50%;margin-left: 25%;}
-
-ul, ol {list-style:none;}
-
-.menu-evento>li {width: 60%;margin: auto}
-.menu-evento li{ background-color:#444; color:#fff; text-decoration:none; padding:3px 8px;font-size: 17px;transition:.3s}
-.menu-evento li ul {display:none;position:absolute;}
-.menu-evento li:hover{background: darkorange;transition:.3s}
-.menu-evento li:hover > ul {display:block;margin-left: -60px;}
-.menu-evento button{width: 70px;background-color: transparent;color: #fff;height: 25px;border: none;}

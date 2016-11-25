@@ -61,8 +61,6 @@ require_once ("database.php");
                 $eventos[$cont][6] = $row['NombreCli'];
                 $cont ++;
             }
-        } else {
-            echo "no hay";
         }
         $conn->close();
         return $eventos;

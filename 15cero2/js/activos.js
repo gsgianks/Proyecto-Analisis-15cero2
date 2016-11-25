@@ -79,8 +79,10 @@ function showEditActive(_id,_cod,_desc,_precio){
 
 }
 function showAddActive(){
+    alert("activo add");
     $('.form,.form>*').css({'visibility':'hidden'});
     $('.agregar-activo').css({'visibility':'initial'});
+    $("#id-activo").css("display","block");
 }
 
 function eliminarCategoria(_id,e,str){

@@ -34,10 +34,10 @@
                     <div class="form-group">
                         <label>Nombre Evento:</label><input class="form-control" type="text" name="nombreEven" required>
                     </div>
-                    <div class="form-group">
+                        <div class="form-group">
                         <label >Cliente:</label>
-                        <select id="clientes" name="cliente" class="form-control">
-                            <?php   for($i = 0;$i<count($array);$i++){?>
+                            <select id="clientes" name="cliente" class="form-control">
+                                <?php   for($i = 0;$i<count($array);$i++){?>
                                 <option required value='<?php echo $array[$i][0]?>'><?php echo $array[$i][1]?></option>
                                 <?php }?>
                                 <option value="0">--Agregar Nuevo--</option>
@@ -50,14 +50,14 @@
                             <label >Fecha Final:</label><input class="form-control" type="date" name="fechaFin" placeholder="yyyy-MM-dd"required>
                         </div>
                         <div class="form-group">
-                            <label >Ubicación:</label><input class="form-control" type="text" name="ubicacion" required>
+                            <label >Ubicaci&oacute;n:</label><input class="form-control" type="text" name="ubicacion" required>
                         </div>
 
                         <button class="submit btn btn-primary" type="submit" value="Agregar">Agregar</button>
                     </form>
                 </section>
 
-                <section class="formulario" id="clienteNuevo" style="display:none;">
+<!--                <section class="formulario" id="clienteNuevo" style="display:none;">
                     <h1>Insertar Cliente</h1>
                     <form action="controladoras/controladora_cliente.php" method="post">
                         <input type="hidden" name="consulta" value="agregarCliente">
@@ -69,10 +69,12 @@
                         <input class="submit" type="submit" value="Agregar">
                     </form>
                 </section>
-
+-->
             </aside>
             <section class="lista-eventos">
                 <h3>Eventos</h3>
+                <?php require_once 'controladoras/controladora_evento.php'; $eventos = seleccionarEventos();
+                if($eventos != null){?>
                 <table id="table-eventos">
                     <thead>
                         <tr>
@@ -86,8 +88,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php require_once 'controladoras/controladora_evento.php'; $eventos = seleccionarEventos();
-                        for($i = 0;$i<count($eventos);$i++){?>
+                        
+                        <?php for($i = 0;$i<count($eventos);$i++){?>
                             <tr class="opciones">
                                 <td style='display: none;'><?php echo $eventos[$i][0]; ?></td>
                                 <td><?php echo $eventos[$i][1]; ?></td>
@@ -97,7 +99,7 @@
                                 <td><?php echo $eventos[$i][6]; ?></td>
                                 <!-- <td><button class="id02" onclick="mostrarDetalleEvento(<?php echo $eventos[$i][0] ?>)">Mostrar</button></td> -->
                                 <td>
-                                    <ul class="menu-evento">
+                                    <ul class="options">
                                         <li><p>Opciones</p>
                                             <ul>
                                                 <li><button onclick="mostrarDetalleEvento(<?php echo $eventos[$i][0]; ?>)">Ver</button></li>
@@ -110,7 +112,13 @@
                             </tr>
                             <?php }?>
                         </tbody>
-                    </section>
+                </table>
+                <?php }else{ ?>
+
+                    <p>No hay eventos registrados</p>
+
+                <?php }?>
+            </section>
                 </div>
 
                 <div id="id02" class="modal">
@@ -126,7 +134,7 @@
                     <div class="modal-content animate">
                         <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
                         <div class="div-modal3">
-                            <section class="formulario">
+                            <section class="formulario form-left">
                                 <h1>Modificar Evento</h1>
 
                                 <form action="controladoras/controladora_evento.php" method="post">
@@ -134,37 +142,63 @@
                                     <input type="hidden" name="consulta" value="modificarEvento">
                                     <input type="hidden" name="nombreCliente" value="modificarEvento">
                                     <input type="hidden" name="idEvento">
-                                    <label >Nombre Evento:</label><input type="text" name="nombreEven" required>
-                                    <label >Cliente:</label><br>
-
-                                    <select id="clientesModal" name="cliente">
+                                    <div class="form-group"><label >Nombre Evento:</label><input class="form-control" type="text" name="nombreEven" required></div>
+                                    <div class="form-group"><label >Cliente:</label><br>
+                                    <select class="form-control" id="clientesModal" name="cliente">
                                         <?php   for($i = 0;$i<count($array);$i++){?>
                                             <option required value='<?php echo $array[$i][0]?>'><?php echo $array[$i][1]?></option>
                                             <?php }?>
                                             <option value="0">--Agregar Nuevo--</option>
-                                        </select>
+                                    </select><br></div>
 
-                                        <label >Fecha Inicio:</label><input type="date" name="fechaIni" placeholder="yyyy-MM-dd" required>
-                                        <label >Fecha Final:</label><input type="date" name="fechaFin" placeholder="yyyy-MM-dd"required>
-                                        <label >Ubicación:</label><input type="text" name="ubicacion" required>
+                                    <div class="form-group"><label >Fecha Inicio:</label><input class="form-control" type="date" name="fechaIni" placeholder="yyyy-MM-dd" required></div>
+                                    <div class="form-group"><label >Fecha Final:</label><input class="form-control" type="date" name="fechaFin" placeholder="yyyy-MM-dd" required></div>
+                                    <div class="form-group"><label >Ubicaci&oacute;n:</label><input class="form-control" type="text" name="ubicacion" required></div>
 
-                                        <input class="submit" type="submit" value="Modificar">
+                                    <button class="submit btn btn-primary" type="submit">Modificar</button> 
                                     </form>
                                 </section>
 
-                                <section class="formulario" id="clienteNuevoModal" style="display:none;">
+                                <section class="formulario form-right" id="clienteNuevoModal" style="display:none;">
                                     <h1>Insertar Cliente</h1>
                                     <form action="controladoras/controladora_cliente.php" method="post">
                                         <input type="hidden" name="consulta" value="agregarCliente">
                                         <input type="hidden" name="donde" value="nada">
-                                        <label>Nombre:</label><br><input type="text" name="nombre">
-                                        <label>Correo:</label><br><input type="email" name="correo">
-                                        <label>Direcci&oacute;n</label><br><input type="text" name="direccion">
-                                        <label>Telefono</label><br><input type="text" name="telefono">
-                                        <input class="submit" type="submit" value="Agregar">
+                                        <div class="form-group"><label>Nombre:</label><br><input class="form-control" type="text" name="nombre" required></div>
+                                        <div class="form-group"><label>Correo:</label><br><input class="form-control" type="email" name="correo" required></div>
+                                        <div class="form-group"><label>Direcci&oacute;n</label><br><input class="form-control" type="text" name="direccion" required></div>
+                                        <div class="form-group"><label>Telefono</label><br><input class="form-control" type="text" name="telefono" required></div>
+                                        <button class="submit btn btn-primary" type="submit">Agregar</button> 
                                     </form>
                                 </section>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="id04" class="modal">
+                    <!-- Modal Content -->
+                    <div class="modal-content animate">
+                        <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <div class="div-modal4">
+                                <h1>Insertar Cliente</h1>
+                                <form class="formulario" action="controladoras/controladora_cliente.php" method="post">
+                                    <input type="hidden" name="consulta" value="agregarCliente">
+                                    <input type="hidden" name="donde" value="nada">
+                                    <div class="form-group">
+                                    <label>Nombre:</label><br><input class="form-control" type="text" name="nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Correo:</label><br><input class="form-control" type="email" name="correo" required>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Direcci&oacute;n</label><br><input class="form-control" type="text" name="direccion" required>
+                                    </div>
+                                    <div class="form-group">
+                                    <label>Telefono</label><br><input class="form-control" type="text" name="telefono" required>
+                                    </div>
+                                    <button class="submit btn btn-primary" type="submit">Agregar</button> 
+                                </form>                  
                         </div>
                     </div>
                 </div>

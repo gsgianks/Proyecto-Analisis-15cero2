@@ -5,14 +5,7 @@ $(document).ready(function () {
    $("#clientes").change(function(){
 
         if($("#clientes").val() == 0){
-            $("#clienteNuevo").css("display", "block"); 
-            $(".formulario").css("margin-left","4%");
-            //alert("agregar nuevo");    
-        }else if($("#clientes").val() != 0){
-            //alert("diferente");
-            $("#clienteNuevo").css("display", "none"); 
-            $(".formulario").css("margin-left","20%");
-            //alert($("#clientes option[value="+$("#clientes").val()+"]").text());
+            $('#id04').css("display", "block");   
         }
     });
 
@@ -20,12 +13,12 @@ $(document).ready(function () {
 
         if($("#clientesModal").val() == 0){
             $("#clienteNuevoModal").css("display", "block"); 
-            $("#id03 .formulario").css("margin-left","4%");
+            $("#id03 .formulario").css("margin-left","2%");
             //alert("agregar nuevo");    
         }else if($("#clientesModal").val() != 0){
             //alert("diferente");
             $("#clienteNuevoModal").css("display", "none"); 
-            $(".formulario").css("margin-left","20%");
+            $("#id03 .formulario").css("margin-left","25%");
             $('.formulario input[name=nombreCliente]').val($("#clientesModal option[value="+$("#clientesModal").val()+"]").text());
             //alert($('.formulario input[name=nombreCliente]').val());
             //alert($("#clientesModal option[value="+$("#clientesModal").val()+"]").text());
@@ -142,7 +135,7 @@ function seleccionarActivosEventos(success, activos, evento){
     //alert(evento);
     if(success === true){
         //alert("true");    
-        var html = '<table><tr><td>Nombre</td><td>Fecha Inicio</td><td>Fecha Final</td><td>Lugar</td><td>Nombre Cliente</td></tr><tr>';
+        var html = '<table> <thead><tr><td>Nombre</td><td>Fecha Inicio</td><td>Fecha Final</td><td>Lugar</td><td>Nombre Cliente</td></tr> </thead><tr>';
         var activar = false;
         var numero = 0;
         $("#table-eventos tbody tr").each(function (index) 
@@ -175,7 +168,7 @@ function seleccionarActivosEventos(success, activos, evento){
         $(".div-modal2").html(html);
     }else{
         
-        var html = '<table><tr><td>Nombre</td><td>Fecha Inicio</td><td>Fecha Final</td><td>Lugar</td><td>Nombre Cliente</td></tr><tr>';
+        var html = '<table> <thead><tr><td>Nombre</td><td>Fecha Inicio</td><td>Fecha Final</td><td>Lugar</td><td>Nombre Cliente</td> </thead></tr><tr>';
         var activar = false;
         var numero = 0;
         var nombre = 'hola';
