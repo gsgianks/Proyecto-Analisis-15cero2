@@ -18,7 +18,7 @@
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 999; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -35,10 +35,7 @@
     margin: auto; /* 15% from the top and centered */
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
-    margin-left: 25%;
-    margin-top: 10px;
     border-radius: 6px;
-    
 }
 
 /* The Close Button */
