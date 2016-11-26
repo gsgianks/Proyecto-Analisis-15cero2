@@ -128,8 +128,7 @@
             <!-- Modal Content -->
             <div class="modal-content animate">
                 <span onclick="document.getElementById('id-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <div class="div-modal-activo">
-                <h1>Agregar Activo</h1>
+                <div class="div-modal-activo">            
                 <hr>
                     <div class="activo-form form agregar-activo">
                         <form class="agregar-activo" action="controladoras/ActivosController.php" method="post">
