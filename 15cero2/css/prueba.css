@@ -1,4 +1,8 @@
 /* Set a style for all buttons */
+.modal h3{margin-top: 4%;margin-bottom: 4%;}
+#id02 button, #id02 h4{width: 40%;margin: 2%;}
+#id02{text-align:center;}
+#id02 h4{border: 1px solid green}
 .modal button{
     margin-bottom: 4%;
 }
