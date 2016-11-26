@@ -56,9 +56,9 @@
                         <thead>
                             <tr>
                                 <th>Código</th>
+                                <th>Total</th>
                                 <th>Disponible/s</th>
                                 <th>Reservado/s</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody class="replaceable">

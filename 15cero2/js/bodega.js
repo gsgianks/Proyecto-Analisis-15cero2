@@ -13,7 +13,8 @@ $(document).ready(
                     str='<tr>'+
                     '<td>'+response[i][0]+'</td>'+
                     '<td>'+response[i][1]+'</td>'+
-                    '<td>'+response[i][2]+'</td></tr>';
+                    '<td>'+response[i][2]+'</td>'+
+                    '<td>'+response[i][3]+'</td></tr>';
                     temp.append(str);
                 }
                 tbody.replaceWith(temp);
