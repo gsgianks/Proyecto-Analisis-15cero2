@@ -1,9 +1,11 @@
 $(document).ready(
     function(){
+        //$('.form, .form>*').css({'visibility':'hidden'});
         alertify.set('confirm','transition', 'fade');
         alertify.set('notifier','position', 'top-right');
         if($('.nav-alerts').text()!=''){alertify.notify($('.nav-alerts').text(),$('.nav-alerts').attr('type'),3);}
-        //$('.form, .form>*').css({'visibility':'hidden'});
+        
+       // alert("hola");
 
     }
 );
@@ -37,7 +39,8 @@ function showAddCategory(){
 }
 
 function showEditActive(_id,_cod,_desc,_precio){
-    $('.form,.form>*').css({'visibility':'hidden'});
+    //$('.form,.form>*').css({'visibility':'hidden'});
+    $("#modificar-activo").css("display","block");
     formulario=$('.editar-activo');
 
     formulario.css({'visibility':'initial'});
@@ -80,8 +83,8 @@ function showEditActive(_id,_cod,_desc,_precio){
 }
 function showAddActive(){
     //alert("activo add");
-    $('.form,.form>*').css({'visibility':'hidden'});
-    $('.agregar-activo').css({'visibility':'initial'});
+    //$('.form,.form>*').css({'visibility':'hidden'});
+    //$('.agregar-activo').css({'visibility':'initial'});
     $("#id-activo").css("display","block");
 }
 

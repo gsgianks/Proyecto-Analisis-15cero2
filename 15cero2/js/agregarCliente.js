@@ -163,7 +163,7 @@ function seleccionarActivosEventos(success, activos, evento){
         for(i = 0;i<activos.length;i++){                
             html+='<tr><td>'+activos[i][0]+'</td><td>'+activos[i][1]+'</td></tr>';
         }
-        html+='</table><button onClick="agregarActivosEvento('+evento+','+nombre+')">Modificar Activos</button>'
+        html+='</table><button class="submit btn btn-primary" onClick="agregarActivosEvento('+evento+','+nombre+')">Modificar Activos</button>'
         //alert(html);
         $(".div-modal2").html(html);
     }else{
@@ -193,7 +193,7 @@ function seleccionarActivosEventos(success, activos, evento){
             });            
         });
         //alert(evento+' '+nombre);
-        html += '</tr></table><h4>No hay activos asignados</h4><button onClick="agregarActivosEvento('+evento+','+nombre+')">Agregar Activos</button>';
+        html += '</tr></table><h4>No hay activos asignados</h4><button class="submit btn btn-primary" onClick="agregarActivosEvento('+evento+','+nombre+')">Agregar Activos</button>';
         $(".div-modal2").html(html);
     }
     $('#id02').css("display", "block"); 
@@ -305,7 +305,7 @@ function modificarCliente(idCliente){
                 }
             });           
         });
-     alertify.notify('Cliente Modificado', 'success', 5);
+     //alertify.notify('Cliente Modificado', 'success', 5);
 }
 function eliminarCliente(idCliente){
     //alert("eliminarCliente");

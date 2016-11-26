@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Insertar Evento</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/newStyle.css">
     <link rel="stylesheet" href="css/activos.css">
@@ -182,6 +183,7 @@
                         <span onclick="document.getElementById('id04').style.display='none'" class="close" title="Close Modal">&times;</span>
                         <div class="div-modal4">
                                 <h3>Insertar Cliente</h3>
+                                <hr>
                                 <form class="formulario" action="controladoras/controladora_cliente.php" method="post">
                                     <input type="hidden" name="consulta" value="agregarCliente">
                                     <input type="hidden" name="donde" value="nada">

@@ -112,10 +112,25 @@
                             </tbody>
                         </table>
                     </div>
-                    <!--------------------------------------------------------------------------------------->
-                    <!--------------------------------------------------------------------------------------->
+                  
 
-                      <!--  FORMULARIO AGREGAR ACTIVO 
+                    
+
+            </section>
+
+            <footer>
+
+            </footer>
+
+        </div>
+
+        <div id="id-activo" class="modal">
+            <!-- Modal Content -->
+            <div class="modal-content animate">
+                <span onclick="document.getElementById('id-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <div class="div-modal-activo">
+                <h1>Agregar Activo</h1>
+                <hr>
                     <div class="activo-form form agregar-activo">
                         <form class="agregar-activo" action="controladoras/ActivosController.php" method="post">
                             <input type="hidden" name="consulta" value="agregarActivo">
@@ -142,9 +157,9 @@
                                 <label for="categorias">Categoría</label>
                                 <select class="form-control" id="categorias-add" name="categoria" onchange="cambiarSubcategorias($(this).val(),$('select#subcategorias-add'))" required>
                                     <option value="addNew">-Agregar nueva categoria-</option>
-                                    <?php //foreach (cargarCategorias() as $categoria) { ?>
-                                        <option value="<?php //echo $categoria[0] ?>" ><?php //echo $categoria[1]; ?></option>
-                                    <?php //} ?>
+                                    <?php foreach (cargarCategorias() as $categoria) { ?>
+                                        <option value="<?php echo $categoria[0] ?>" ><?php echo $categoria[1]; ?></option>
+                                    <?php } ?>
                                 </select>
 
                                 <label for="subcategorias">Subcategoría</label>
@@ -153,11 +168,16 @@
                             <button class="btn btn-primary" type="submit" >Agregar</button>
                         </form>
                     </div>
-                    -->
-                    <!----------------------------------------------------------------------->
-                    <!----------------------------------------------------------------------->
+                </div>
+            </div>
+        </div>
 
-                    <!--- FORMULARIO EDITAR ACTIVO -->
+        <!--- FORMULARIO EDITAR ACTIVO -->
+        <div id="modificar-activo" class="modal">
+            <!-- Modal Content -->
+            <div class="modal-content animate">
+                <span onclick="document.getElementById('modificar-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
+                
                     <div class="activo-form form editar-activo">
                         <form class="editar-activo" action="controladoras/ActivosController.php" method="post">
                             <input type="hidden" name="consulta" value="editarActivo">
@@ -198,59 +218,6 @@
                     </div>
                     <!---------------------------------------------------------------------->
                     <!---------------------------------------------------------------------->
-
-            </section>
-
-            <footer>
-
-            </footer>
-
-        </div>
-
-        <div id="id-activo" class="modal">
-            <!-- Modal Content -->
-            <div class="modal-content animate">
-                <span onclick="document.getElementById('id-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <div class="div-modal-activo">
-                <h1>Agregar Activo</h1>
-                    <div class="activo-form form agregar-activo">
-                        <form class="agregar-activo" action="controladoras/ActivosController.php" method="post">
-                            <input type="hidden" name="consulta" value="agregarActivo">
-                            <h3>Agregar Activo</h3>
-                            <hr>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="codigo" required placeholder="Codigo">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="descripcion" required placeholder="Descripcion">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="precio" required placeholder="Precio Unit.">
-                            </div>
-                            <div class="form-group">
-                                <label for="estado" class="">Estado</label>
-                                <select class="form-control" name="estado" id="estado">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="categorias">Categoría</label>
-                                <select class="form-control" id="categorias-add" name="categoria" onchange="cambiarSubcategorias($(this).val(),$('select#subcategorias-add'))" required>
-                                    <option value="addNew">-Agregar nueva categoria-</option>
-                                    <?php foreach (cargarCategorias() as $categoria) { ?>
-                                        <option value="<?php echo $categoria[0] ?>" ><?php echo $categoria[1]; ?></option>
-                                    <?php } ?>
-                                </select>
-
-                                <label for="subcategorias">Subcategoría</label>
-                                <select class="form-control" id="subcategorias-add" name="subcategorias" required oninvalid="this.setCustomValidity('Se necesita agregar una subcategoria')"></select>
-                            </div>
-                            <button class="btn btn-primary" type="submit" >Agregar</button>
-                        </form>
-                    </div>
-                </div>
             </div>
         </div>
 
