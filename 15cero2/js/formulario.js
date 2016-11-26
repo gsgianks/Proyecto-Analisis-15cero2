@@ -188,11 +188,12 @@ function respModificarCliente(success, idCliente, nombre,correo, telefono, direc
                 }
             });           
         });
-        $('.formulario input[type=text]').val("");
-        $('.formulario input[type=email]').val("");
-        $('.formulario input[name=consulta]').val('agregarCliente');
-        $('.formulario h1').text('Insertar Cliente');
-        $('.formulario input[type=submit]').val('Agregar');
+        $('.div-editar-cliente input[type=text]').val("");
+        $('.div-editar-cliente input[type=email]').val("");
+        $('#modal-editar-cliente').css("display", "none"); 
+       // $('.div-editar-cliente input[name=consulta]').val('agregarCliente');
+        //$('.div-editar-cliente h1').text('Insertar Cliente');
+        //$('.div-editar-cliente input[type=submit]').val('Agregar');
     }else{
         alert('Error: algo ocurrio');
     }

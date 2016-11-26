@@ -276,10 +276,12 @@ function respEliminarEvento(success,evento){
     }
 }
 function modificarCliente(idCliente){
-    //alert("modificarCliente "+idCliente);
-    $('.formulario input[name=consulta]').val('modificarCliente');
-    $('.formulario h1').text('Modificar Cliente');
-    $('.formulario input[type=submit]').val('Modificar');
+  //  alert("modificarCliente "+idCliente);
+    $('#modal-editar-cliente').css("display", "block"); 
+
+    //$('.formulario input[name=consulta]').val('modificarCliente');
+    //$('.formulario h1').text('Modificar Cliente');
+    //$('.formulario input[type=submit]').val('Modificar');
     condicion = false;
     $("#table-clientes tbody tr").each(function (index) 
             {
@@ -291,15 +293,15 @@ function modificarCliente(idCliente){
                 }
                 if(condicion === true){
                     if(index2 == 0){
-                        $('.formulario input[name=idCliente]').val($(this).text());
+                        $('.div-editar-cliente input[name=idCliente]').val($(this).text());
                     }else if(index2 == 1){
-                        $('.formulario input[name=nombre]').val($(this).text());
+                        $('.div-editar-cliente input[name=nombre]').val($(this).text());
                     }else if(index2 == 2){
-                        $('.formulario input[name=correo]').val($(this).text());
+                        $('.div-editar-cliente input[name=correo]').val($(this).text());
                     }else if(index2 == 3){
-                        $('.formulario input[name=telefono]').val($(this).text());
+                        $('.div-editar-cliente input[name=telefono]').val($(this).text());
                     }else if(index2 == 4){
-                        $('.formulario input[name=direccion]').val($(this).text());
+                        $('.div-editar-cliente input[name=direccion]').val($(this).text());
                         condicion = false;
                     }
                 }

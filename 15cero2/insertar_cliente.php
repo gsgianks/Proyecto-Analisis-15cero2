@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/activos.css">
     <link rel="stylesheet" href="js/css/alertify.min.css">
     <link rel="stylesheet" href="js/css/themes/default.min.css">
+    <link href="css/prueba.css" rel="stylesheet" type="text/css"/>
 
 
 </head>
@@ -78,7 +79,28 @@
 
     </section>
   </div>
-	</div>
+<div id="modal-editar-cliente" class="modal">
+    <!-- Modal Content -->
+    <div class="modal-content animate">
+        <span onclick="document.getElementById('modal-editar-cliente').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <div class="div-editar-cliente">
+            <section class="formulario">
+                    <h1>Modificar Cliente</h1>
+                    <hr>
+                    <form action="controladoras/controladora_cliente.php" method="post">
+                        <input type="hidden" name="consulta" value="modificarCliente">
+                        <input type="hidden" name="idCliente">
+                        <input type="hidden" name="donde" value="clientes">
+                        <div class="form-group"><label>Nombre:</label><br><input class="form-control" type="text" name="nombre" required></div>
+                        <div class="form-group"><label>Correo:</label><br><input class="form-control" type="email" name="correo" required></div>
+                        <div class="form-group"><label>Direcci&oacute;n</label><br><input class="form-control" type="text" name="direccion" required></div>
+                        <div class="form-group"><label>Telefono</label><br><input class="form-control" type="text" name="telefono" required></div>
+                        <button class="submit btn btn-primary" type="submit">Modificar</button> 
+                    </form>
+            </section>
+        </div>
+    </div>
+</div>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/agregarCliente.js"></script>
