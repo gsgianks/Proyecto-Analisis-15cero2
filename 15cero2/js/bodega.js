@@ -6,7 +6,6 @@ $(document).ready(
             type:'post',
             dataType:'json',
             success:function(response){
-                console.log(response);
                 tbody=$('.replaceable');
                 temp=tbody.clone();
                 for(i=0;i<response.length;i++){
@@ -15,9 +14,8 @@ $(document).ready(
                     '<td>'+response[i][0]+'</td>'+
                     '<td>'+response[i][1]+'</td>'+
                     '<td>'+response[i][2]+'</td></tr>';
+                    temp.append(str);
                 }
-                console.log(str);
-                temp.append(str);
                 tbody.replaceWith(temp);
             },
             error:function(){alert('Ocurrio un error');}
