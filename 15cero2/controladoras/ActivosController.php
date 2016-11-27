@@ -64,7 +64,7 @@
         $conn = getConnection();
         //1- Select
         //2- InsertarActivo
-        $sql = "call paAdministrarArticulo(3,".$_POST['id'].",'".$_POST['cod']."',".$_POST['subcategorias'].",'".$_POST['desc']."',".$_POST['precio'].",'".$_POST['estado']."');";
+        $sql = "call paAdministrarArticulo(3,".$_POST['id'].",null,".$_POST['subcategorias'].",'".$_POST['desc']."',".$_POST['precio'].",'".$_POST['estado']."');";
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();

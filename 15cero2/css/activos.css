@@ -32,7 +32,8 @@ ul{list-style: none}
 .options li:hover > ul {display:block;margin-left: -60px;}
 .options button{width: 70px;background-color: transparent;color: #fff;height: 25px;border: none;}
 
-.activo-form{width: 300px;margin: auto;padding: .5em;border: 1px solid lightgray;}
+.activo-form{width: 300px;margin: auto;padding: .5em;}
 .activo-form form{width: 90%;margin: auto}
 .btn.right{margin:0;position: relative;float: right}
 a.btn{border: 1px solid lightgray;padding:0px 5px;border-radius: 3px;color: #666;cursor:pointer}
+.modal-content{width: 25%}

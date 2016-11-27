@@ -1,8 +1,5 @@
-aside.aside-left{float: left;border-right:1px solid lightgrey;padding:1em;width:15%;}
-.aside-left a{color:#f6921e;text-decoration:none;}
-.aside-left,.aside-left>h3{font-size: medium;padding: .5em .2em}
-.aside-content{margin: 2em auto}
 .formulario > .btn{width: 100%}
+.aside-content h3{font-size: medium}
 
 .lista-eventos{float: left;padding:1em 2em;width: 75%}
 .lista-clientes{float: left;padding:1em 2em;width: 75%}

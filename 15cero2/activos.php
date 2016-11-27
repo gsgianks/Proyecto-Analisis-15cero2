@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="js/css/alertify.min.css">
         <link rel="stylesheet" href="js/css/themes/default.min.css">
         <link href="css/prueba.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="css/newStyle.css">
 
         <title>15 C E R O 2 | Activos</title>
     </head>
@@ -112,10 +111,6 @@
                             </tbody>
                         </table>
                     </div>
-                  
-
-                    
-
             </section>
 
             <footer>
@@ -128,7 +123,7 @@
             <!-- Modal Content -->
             <div class="modal-content animate">
                 <span onclick="document.getElementById('id-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <div class="div-modal-activo">            
+                <div class="div-modal-activo">
                 <hr>
                     <div class="activo-form form agregar-activo">
                         <form class="agregar-activo" action="controladoras/ActivosController.php" method="post">
@@ -176,7 +171,7 @@
             <!-- Modal Content -->
             <div class="modal-content animate">
                 <span onclick="document.getElementById('modificar-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
-                
+
                     <div class="activo-form form editar-activo">
                         <form class="editar-activo" action="controladoras/ActivosController.php" method="post">
                             <input type="hidden" name="consulta" value="editarActivo">
@@ -184,12 +179,11 @@
                             <h3>Modificar Activo</h3>
                             <hr>
                             <div class="form-group">
-                                <input class="form-control" type="text" name="cod" required placeholder="Codigo">
-                            </div>
-                            <div class="form-group">
+                                <label for="desc">Descripcion</label>
                                 <input class="form-control" type="text" name="desc" required placeholder="Descripcion">
                             </div>
                             <div class="form-group">
+                                <label for="precio">Precio</label>
                                 <input class="form-control" type="text" name="precio" required placeholder="Precio Unit.">
                             </div>
                             <div class="form-group">

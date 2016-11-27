@@ -4,7 +4,7 @@ $(document).ready(
         alertify.set('confirm','transition', 'fade');
         alertify.set('notifier','position', 'top-right');
         if($('.nav-alerts').text()!=''){alertify.notify($('.nav-alerts').text(),$('.nav-alerts').attr('type'),3);}
-        
+
        // alert("hola");
 
     }
@@ -45,7 +45,6 @@ function showEditActive(_id,_cod,_desc,_precio){
 
     formulario.css({'visibility':'initial'});
     formulario.find('input[name=id]').val(_id);
-    formulario.find('input[name=cod]').val(_cod);
     formulario.find('input[name=desc]').val(_desc);
     formulario.find('input[name=precio]').val(_precio);
 
@@ -56,7 +55,6 @@ function showEditActive(_id,_cod,_desc,_precio){
         dataType:'json',
         success:function(resp){
             formulario.find('select#categorias-edit>option[value='+resp.data['idCat']+']').attr('selected','selected');
-            alert(resp.data['idCat']);
             $.ajax({
                 type:'post',
                 async:false,
@@ -65,11 +63,9 @@ function showEditActive(_id,_cod,_desc,_precio){
                 dataType:'json',
                 success:function(subs){
                     option="";
-                    alert(subs);
                     for(i=0; i<subs.length; i++){
                         option+="<option value='"+subs[i][0]+"'>"+subs[i][1]+"</option>";
                     }
-                    alert(option);
                     $('select#subcategorias-edit').append(option);
                 },
                 error:function(err){alert('Ocurrió un error: '+err);}
