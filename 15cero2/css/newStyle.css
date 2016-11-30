@@ -13,7 +13,7 @@ table td, table th{padding: .8em}
 table>tbody>tr:hover{background: #f4f4f4}
 
 .lista-activos{width: 20%;float: left;border: 1px solid green;margin-left: 15%;}
-.activos-necesarios{text-align: center;width: 30%;float: right;/*border: 1px solid green;*/margin-right: 10%;}
+.activos-necesarios{float: left;padding:1em 2em;width: 60%; margin-right: 10%}
 .lista-activos>form>input, .lista-activos>form>select{width: 80%;height: 25px;margin-left: 10%;}
 .lista-activos>form>label{margin-left: 14%;}
 #table{margin-left: 15%;}
