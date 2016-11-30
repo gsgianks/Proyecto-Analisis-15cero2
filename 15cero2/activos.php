@@ -150,10 +150,16 @@
                             <div class="form-group">
                                 <label for="categorias">Categoría</label>
                                 <select class="form-control" id="categorias-add" name="categoria" onchange="cambiarSubcategorias($(this).val(),$('select#subcategorias-add'))" required>
-                                    <option value="addNew">-Agregar nueva categoria-</option>
-                                    <?php foreach (cargarCategorias() as $categoria) { ?>
+                                    <?php
+                                        $_cats=cargarCategorias();
+                                        if(empty($_cats)){
+                                            echo '<option value="">Sin categorías</option>';
+                                        }
+                                        else{
+                                        foreach ($_cats as $categoria) {
+                                    ?>
                                         <option value="<?php echo $categoria[0] ?>" ><?php echo $categoria[1]; ?></option>
-                                    <?php } ?>
+                                    <?php } } ?>
                                 </select>
 
                                 <label for="subcategorias">Subcategoría</label>

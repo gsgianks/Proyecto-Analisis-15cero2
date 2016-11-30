@@ -5,7 +5,7 @@ $(document).ready(
         alertify.set('notifier','position', 'top-right');
         if($('.nav-alerts').text()!=''){alertify.notify($('.nav-alerts').text(),$('.nav-alerts').attr('type'),3);}
 
-       // alert("hola");
+        // alert("hola");
 
     }
 );
@@ -135,21 +135,18 @@ function eliminarActivo(_id){
 
     function cambiarSubcategorias(_id,e){
         $(e).children().remove();
-        if(_id==='addNew'){showAddCategory();}
-        else {
-            $.ajax({
-                type:'post',
-                url:'./controladoras/controladora_categoria.php',
-                data:{id:_id,consulta:'cargarSubcategorias'},
-                dataType:'json',
-                success:function(resp){
-                    for(i=0; i<resp.length;i++){
-                        $(e).append($('<option value="'+resp[i][0]+'">'+resp[i][1]+'</option>'));
-                    }
-                },
-                error:function(err){alert('Ocurrió un error: '+err);}
-            });
-        }
+        $.ajax({
+            type:'post',
+            url:'./controladoras/controladora_categoria.php',
+            data:{id:_id,consulta:'cargarSubcategorias'},
+            dataType:'json',
+            success:function(resp){
+                for(i=0; i<resp.length;i++){
+                    $(e).append($('<option value="'+resp[i][0]+'">'+resp[i][1]+'</option>'));
+                }
+            },
+            error:function(err){alert('Ocurrió un error: '+err);}
+        });
     }
 
     function cargarTablaTodos(elm){
