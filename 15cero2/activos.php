@@ -78,12 +78,17 @@
 
                     <div class="table-stock-container">
                         <button class="btn" onclick="showAddActive()"><span>+</span>Agregar activo</button>
+                        <button class="btn" onclick="showAddActive()"><span>+</span>Agregar activo</button>
+
+                        <form>
                         <table class="table-stock">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Cod.</th>
                                     <th>Descripcion</th>
                                     <th>Precio</th>
+                                    <th>Estado</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -93,6 +98,7 @@
                                     if(!empty($activos)){
                                     for ($i=0; $i < count($activos); $i++) { ?>
                                 <tr id="<?php echo $activos[$i][0]; ?>">
+                                    <td><div class="form-group"><input type="radio" onclick="alert('clicked')" onchange="alert('changed')"></div></td>
                                     <td><?php echo $activos[$i][1]; ?></td>
                                     <td><?php echo $activos[$i][3]; ?></td>
                                     <td><?php echo $activos[$i][4]; ?></td>
@@ -110,6 +116,7 @@
                                 </tr><?php } } else {echo "No hay activos en este momento";} ?>
                             </tbody>
                         </table>
+                        </form>
                     </div>
             </section>
 
@@ -136,8 +143,11 @@
                             <div class="form-group">
                                 <input class="form-control" type="text" name="descripcion" required placeholder="Descripcion">
                             </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" name="precio" required placeholder="Precio Unit.">
+                            <div class="form-group precio">
+                                <input class="form-control" min="0" type="number" name="precio" required placeholder="Precio Unit.">
+                            </div>
+                            <div class="form-group cant">
+                                <input class="form-control" min="0" type="number" name="cant" required placeholder="Cant.">
                             </div>
                             <div class="form-group">
                                 <label for="estado" class="">Estado</label>

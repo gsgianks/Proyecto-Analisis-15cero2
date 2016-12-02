@@ -10,6 +10,9 @@ aside.aside-left{float: left;height: 90vh;border-right:1px solid lightgrey;paddi
 .aside-left hr{margin-bottom: .5em}
 .aside-left .lead li>a.selected{font-weight: 500}
 
+.activo-form .form-group{margin: 0}
+.form-group.precio, .form-group.cant{float: left;margin-right: 1em;width: 40%;margin-bottom: .5em}
+
 .table-stock-container{width: 80%;margin:1em .5em;float: left;}
 .table-stock-container .btn{background: lightgreen;color: white;border-radius: 6px;padding:.5em 1em;border: none;}
 .table-stock-container .btn:active{background: green;color: lightgrey;}

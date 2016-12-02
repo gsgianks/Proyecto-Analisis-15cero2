@@ -82,7 +82,14 @@
         $conn = getConnection();
         //1- Select
         //2- InsertarActivo
-        $sql = "call paAdministrarArticulo(2,null,'".$_POST['codigo']."',".$_POST['subcategorias'].",'".$_POST['descripcion']."',".$_POST['precio'].",'".$_POST['estado']."');";
+
+        //$num=(int)$_POST['cant'];
+        for($i=0;$i<(int)$_POST['cant'];$i++){
+            $sql = "call paAdministrarArticulo(2,null,'".$_POST['codigo']."',".$_POST['subcategorias'].",'".$_POST['descripcion']."',".$_POST['precio'].",'".$_POST['estado']."');";
+            if ($conn->query($sql) != TRUE) {
+                header('Location: ../activos.php?msg=error');
+            }
+        }
 
         if ($conn->query($sql) === TRUE) {
             $conn->close();
