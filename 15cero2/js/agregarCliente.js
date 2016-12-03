@@ -53,8 +53,6 @@ function ajax(urll, datas){
                     selectPorCategoria(resp.Success,resp.Activos);
                 }else if(resp.Type === 'eliminarActivoEvento'){
                     respEliminarActivoEvento(resp.Success, resp.Activo);
-                }else if(resp.Type === 'seleccionarActivosEventos'){
-                    seleccionarActivosEventos(resp.Success, resp.Activos, resp.Evento);
                 }else if(resp.Type === "eliminarEvento"){
                     //alert("eliminarEvento");
                     respEliminarEvento(resp.Success,resp.Evento);
@@ -63,6 +61,9 @@ function ajax(urll, datas){
                 }else if(resp.Type === 'cantidadActivos'){
                     //alert("cantidadActivos "+resp.cantidad);
                     $('#cantidad_maxima').text(resp.cantidad);
+                   // $('#cantidad_activos').attr('max',resp.cantidad);
+
+                    alert()
                 }/*else if(resp.Type === 'cargarEvento'){
                     alert("evento recuperado");
                     respCargarEvento(resp.Success, resp.Evento, resp.Nombre, resp.FechaIni, resp.FechaFin,resp.Cliente,resp.Ubicacion,resp.nombreCliente);
@@ -126,80 +127,9 @@ function respEliminarActivoEvento(success, activo){
         alert('ERROR - algo ocurrió!');
     }
 }
-function mostrarDetalleEvento(ide){
-    //alert('mostrarDetalleEvento   '+ide);
-    var data = {consulta: 'seleccionarActivosEventos', id:ide};
-    ajax('controladoras/controladora_evento_activo.php',data);
-}
-function seleccionarActivosEventos(success, activos, evento){
-    //alert(evento);
-    if(success === true){
-        //alert("true");    
-        var html = '<table> <thead><tr><td>Nombre</td><td>Fecha Inicio</td><td>Fecha Final</td><td>Lugar</td><td>Nombre Cliente</td></tr> </thead><tr>';
-        var activar = false;
-        var numero = 0;
-        $("#table-eventos tbody tr").each(function (index) 
-        {
-            $(this).children("td").each(function (index2) 
-            {
-                if(index2 === 0 && $(this).text() === evento){
-                    activar = true;
 
-                    //alert('encontrado ' )
-                }
-                if(activar == true && numero<6){
-                    if(numero>0){
-                       html+='<td>'+$(this).text()+'</td>'
-                    }
-                    if(numero === 1){
-                            nombre = "'"+$(this).text()+"'";
-                            //alert('name'+nombre);
-                        } 
-                     numero++;
-                }
-            })            
-        })
-        html += '</tr></table><table id="table-activos"><tr><td>Descipci&oacute;n</td><td>Cantidad</td></tr>';
-        for(i = 0;i<activos.length;i++){                
-            html+='<tr><td>'+activos[i][0]+'</td><td>'+activos[i][1]+'</td></tr>';
-        }
-        html+='</table><button class="submit btn btn-primary" onClick="agregarActivosEvento('+evento+','+nombre+')">Modificar Activos</button>'
-        //alert(html);
-        $(".div-modal2").html(html);
-    }else{
-        
-        var html = '<table> <thead><tr><td>Nombre</td><td>Fecha Inicio</td><td>Fecha Final</td><td>Lugar</td><td>Nombre Cliente</td> </thead></tr><tr>';
-        var activar = false;
-        var numero = 0;
-        var nombre = 'hola';
-        $("#table-eventos tbody tr").each(function (index) {
-            $(this).children("td").each(function (index2) {
-                
-                if(index2 === 0 && $(this).text() === evento){
-                    activar = true;
-                }
-                if(activar == true && numero<6){
-                   // alert($(this).text());
-                    if(numero>0){
-                       html+='<td>'+$(this).text()+'</td>'
-                    }
-                    if(numero === 1){
-                            nombre = "'"+$(this).text()+"'";
-                            //alert('name'+nombre);
-                        } 
-                    numero++;
-                    
-                }
-            });            
-        });
-        //alert(evento+' '+nombre);
-        html += '</tr></table><h4>No hay activos asignados</h4><button class="submit btn btn-primary" onClick="agregarActivosEvento('+evento+','+nombre+')">Agregar Activos</button>';
-        $(".div-modal2").html(html);
-    }
-    $('#id02').css("display", "block"); 
-}
 function agregarActivosEvento(evento,name){
-    alert('redireccion '+evento+' - '+name);
+   // alert('redireccion '+evento+' - '+name);
     window.location = 'insertar_activo_evento.php?e='+evento+'&n='+name;
 }
 function modificarEvento(idEvento){

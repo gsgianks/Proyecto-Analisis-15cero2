@@ -99,11 +99,11 @@ function seleccionarActivosEventos(){
     }
     function cantidadActivos(){
         $conn = getConnection();
-        $sql = "select cantidad from tbbodega where codigo = '".$_POST['codigo']."'";
+        $sql = "select disponibles from tbbodega where codigo = '".$_POST['codigo']."'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $json['cantidad'] = $row['cantidad'];
+                $json['cantidad'] = $row['disponibles'];
             }
             $json['Success'] = true;
 
@@ -129,9 +129,10 @@ function seleccionarActivosEventos(){
         $cont = 0;
         if ($result->num_rows > 0) {
             while($row = $result->fetch_assoc()) {
-                $activos[$cont][0] = $row['Codigo'];
-                $activos[$cont][1] = $row['Descripcion'];
-                $activos[$cont][2] = $row['Precio'];
+                $activos[$cont][0] = $row['precio'];
+                $activos[$cont][1] = $row['codigo'];
+                $activos[$cont][2] = $row['descripcion'];
+                $activos[$cont][3] = $row['cantidad'];
                 $cont ++;
             }
         }

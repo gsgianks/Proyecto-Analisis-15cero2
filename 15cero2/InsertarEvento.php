@@ -103,9 +103,10 @@
                                     <ul class="options">
                                         <li><p>Opciones</p>
                                             <ul>
-                                                <li><button onclick="mostrarDetalleEvento(<?php echo $eventos[$i][0]; ?>)">Ver</button></li>
+<li><button onclick="agregarActivosEvento('<?php echo $eventos[$i][0]; ?>','<?php echo $eventos[$i][1]; ?>')">Activos y Servicios</button></li>
                                                 <li><button onclick="modificarEvento(<?php echo $eventos[$i][0]; ?>)">Modificar</button></li>
                                                 <li><button onclick="eliminarEvento(<?php echo $eventos[$i][0]; ?>)">Eliminar</button></li>
+                                                <li><button onclick="cargarEvento(<?php echo $eventos[$i][0]; ?>)">Informe</button></li>
                                             </ul>
                                         </li>
                                     </ul>

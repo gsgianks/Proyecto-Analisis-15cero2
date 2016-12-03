@@ -1,25 +1,9 @@
-
-$(document).ready(function () {
-    alertify.set('confirm','transition', 'fade');
-    alertify.set('notifier','position', 'top-right');
-    
-    $('form').submit(function (e) {
-
-        e.preventDefault();
-
-       
-        var data = $(this).serializeArray();
-        var url = $(this).attr("action");
-
-        if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
-            alert("magia maagia "+$(this).children('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
-        }
-
-        $.ajax({
-            url: url,
+function ajax(urll,datas){
+$.ajax({
+            url: urll,
             type: 'post',
             dataType: 'json',
-            data: data,
+            data: datas,
             success: function (resp) {      
             //alert(resp.Type+" "+resp.Success);        
                 if(resp.Type === "cliente"){
@@ -41,6 +25,35 @@ $(document).ready(function () {
                 console.log("fallo");
             }
         });
+}
+
+
+$(document).ready(function () {
+    alertify.set('confirm','transition', 'fade');
+    alertify.set('notifier','position', 'top-right');
+    
+    $('form').submit(function (e) {
+
+        e.preventDefault();
+
+       
+        var data = $(this).serializeArray();
+        var url = $(this).attr("action");
+
+        if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
+            alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
+            if($(this).find('input[name=cantidad]').val() <= $('#cantidad_maxima').text()){
+                alert("paso la prueba");
+                ajax(url,data); 
+            }else{
+                alert("Cantidad maxima disponible es: "+$('#cantidad_maxima').text());
+            }
+        }else{
+            ajax(url,data);    
+        }
+
+        
+        
     });
 });
 
