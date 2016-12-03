@@ -173,17 +173,32 @@ function eliminarActivo(_id){
         $(elm).addClass("selected");
     }
 
-    function showEditActiveStatus(_cod,_cant){
+    function showEditActiveStatus(_cod,_buenos,_regulares,_malos){
         $("#modificar-activo-estado").css("display","block");
         form=$('#edit-active-status');
         form.find('input[name=cod]').val(_cod);
-        txt=form.find('.available-stat').text();
-        form.find('.available-stat').text(txt+=' '+_cant);
+        form.find('.available-stat').text('Cant. Disponible: '+_buenos);
         form.find('input[name=cant]').attr('min','0');
-        form.find('input[name=cant]').attr('max',_cant);
+        form.find('input[name=cant]').attr('max',_buenos);
+        form.find('input[name=cantBuenos]').val(_buenos);
+        form.find('input[name=cantRegular]').val(_regulares);
+        form.find('input[name=cantMalos]').val(_malos);
     }
 
-    function cambiarEstados(_cod, _buenos,_regulares,_malos,_selected){
+    function cambiarEstados(elm){
         form=$('#edit-active-status');
-        form.find('input[name=cant]').val();
+        switch ($(elm).val()) {
+            case 'b':
+            form.find('.available-stat').text('Cant. Disponible: '+form.find('input[name=cantBuenos]').val());
+            form.find('input[name=cant]').attr('max',form.find('input[name=cantBuenos]').val());
+            break;
+            case 'r':
+            form.find('.available-stat').text('Cant. Disponible: '+form.find('input[name=cantRegular]').val());
+            form.find('input[name=cant]').attr('max',form.find('input[name=cantRegular]').val());
+            break;
+            case 'm':
+            form.find('.available-stat').text('Cant. Disponible: '+form.find('input[name=cantMalos]').val());
+            form.find('input[name=cant]').attr('max',form.find('input[name=cantMalos]').val());
+            break;
+        }
     }

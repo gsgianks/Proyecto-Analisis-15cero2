@@ -115,7 +115,7 @@
                                                 Opciones
                                                 <ul>
                                                     <li><button onclick="showEditActive('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][3]; ?>','<?php echo $activos[$i][6]; ?>')">Modificar</button></li>
-                                                    <li><button onclick="showEditActiveStatus('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][3]; ?>')">Cambiar Estado</button></li>
+                                                    <li><button onclick="showEditActiveStatus('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][3]; ?>','<?php echo $activos[$i][4]; ?>','<?php echo $activos[$i][5]; ?>')">Cambiar Estado</button></li>
                                                     <li><button onclick="eliminarActivo(<?php echo $activos[$i][0]; ?>)">Eliminar</button></li>
                                                 </ul>
                                             </li>
@@ -267,7 +267,10 @@
 
                         <div class="activo-form form editar-activo">
                             <form class="editar-activo" action="controladoras/ActivosController.php" method="post" id="edit-active-status">
-                                <input type="hidden" name="consulta" value="editarActivo">
+                                <input type="hidden" name="consulta" value="editarActivoEstado">
+                                <input type="hidden" name="cantBuenos">
+                                <input type="hidden" name="cantRegular">
+                                <input type="hidden" name="cantMalos">
                                 <h3>Modificar Estado</h3>
                                 <hr>
                                 <div class="form-group">
@@ -278,8 +281,8 @@
                                     <label for="estado">Estado</label>
                                     <hr>
                                     <label for="estado">De</label>
-                                    <select class="form-control" name="estado-origen">
-                                        <option value="b">Bueno</option>
+                                    <select class="form-control" name="estado-origen" onchange="cambiarEstados(this)">
+                                        <option value="b" selected>Bueno</option>
                                         <option value="r">Regular</option>
                                         <option value="m">Malo</option>
                                     </select>

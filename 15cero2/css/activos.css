@@ -39,12 +39,12 @@ table td:nth-child(2){text-align: left}
 table>tbody>tr:hover{background: #f4f4f4}
 
 ul{list-style: none}
-.options>li {width: 60%;margin: auto}
+.options>li {width: 90%;margin: auto}
 .options li{ background-color:#444; color:#fff; text-decoration:none; padding:3px 8px;font-size: 17px;transition:.3s}
 .options li ul {display:none;position:absolute;}
 .options li:hover{background: darkorange;transition:.3s}
 .options li:hover > ul {display:block;margin-left: -60px;}
-.options button{width: 70px;background-color: transparent;color: #fff;height: 25px;border: none;}
+.options button{width: 125px;background-color: transparent;color: #fff;height: 25px;border: none;}
 
 .activo-form{width: 300px;margin: auto;padding: .5em;}
 .activo-form form{width: 90%;margin: auto}
