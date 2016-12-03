@@ -6,15 +6,23 @@
 	background: white;
 	position: relative;
 	top: 2.5em;
+	font-family: 'Lato', sans-serif;
 }
 body{background:  #929292;}
 table>tbody>tr:last-child{background:  #9fbac8 ;color:#000;font-size: 19px; font-weight: 600;}
 table>tbody>tr:nth-child(1){background: gray;color:#FFF;font-size: 19px; font-weight: 600;}
 table{width: 55%;margin:4em auto; border: none;width: 90%;border-collapse: collapse; font-family: Arial;}
-table a{text-align: right;font-size:small}
+table a{text-align: right;font-size:small;}
 table tbody td,.table tbody td a{text-align: center;font-size: medium; border: 1px solid lightgray; }
-table td,table th{padding: .8em}
-table tr:hover{background: #f4f4f4}
+table td,table th{padding: .8em;}
+table tr:hover{background: #f4f4f4;}
+
+.left{float: left; margin-left: 10%; width: 35%; text-align: left;}
+.right{float: right; margin-right: 10%;width: 35%; text-align: right;}
 
 hr{margin: 2%}
 h1{text-align: center;}
+
+a{float: left; margin: 24px}
+
+#detail_event{float: left; margin-left: 6%;}

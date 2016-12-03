@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    sumarTotal("informe_activos",2);
+    sumarTotal("informe_activos",4);
 });
 
 function sumarTotal(tabla, columna) {
@@ -8,9 +8,12 @@ function sumarTotal(tabla, columna) {
          
     $("#"+tabla+" tbody tr").not(':first').not(':last').each(
         function() {
-            alert($(this).find('td:eq(' + columna + ')'));
+          //  alert($(this).find('td:eq(' + columna + ')'));
             var celdaValor = $(this).find('td:eq(' + columna + ')');
-            
+            var cantidad = $(this).find('td:eq(2)');
+            var precio = $(this).find('td:eq(3)');
+
+            $(this).find('td:eq(4)').text(parseFloat(precio.html().replace(',','.'))*parseFloat(cantidad.html().replace(',','.')));
             if (celdaValor.val() != null)
                     resultVal += parseFloat(celdaValor.html().replace(',','.'));   
         } //function

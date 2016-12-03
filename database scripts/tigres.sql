@@ -168,9 +168,9 @@ CREATE TRIGGER after_insert_articulo
     BEGIN  
 		
 		if exists(select codigo from tbbodega where NEW.codigo = codigo) then
-			update tbbodega set cantidad=cantidad+1 where codigo = NEW.codigo;
+			update tbbodega set disponibles=disponibles+1 where codigo = NEW.codigo;
         else 
-			insert into tbbodega values (NEW.codigo,1);
+			insert into tbbodega values (NEW.codigo,1,0);
         end if;
 	END$$
 DELIMITER ;
@@ -180,12 +180,27 @@ DELIMITER $$
 CREATE TRIGGER after_delete_articulo
     AFTER DELETE ON tbarticulo FOR EACH ROW  
     BEGIN  
-		if exists(select cantidad from tbbodega where old.codigo = codigo and cantidad >1) then
-			update tbbodega set cantidad=cantidad-1 where codigo = old.codigo;
-        else 
+		if exists(select codigo from tbbodega where old.codigo = codigo and disponibles > 1) then
+			update tbbodega set disponibles = disponibles-1 where codigo = old.codigo;
+		else
 			delete from tbbodega where old.codigo = codigo;
         end if;
 	END$$
 DELIMITER ;
 
-select cantidad from tbbodega where codigo = 'ELECT-32'
+
+DELIMITER $$
+CREATE TRIGGER after_insert_evento_articulo
+    AFTER INSERT ON `tbeven-art` FOR EACH ROW  
+    BEGIN  
+		update tbbodega set disponibles=disponibles-NEW.cantidad, reservados = reservados+New.cantidad where codigo = NEW.codigo_articulo;
+	END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER after_delete_evento_articulo
+    AFTER DELETE ON `tbeven-art` FOR EACH ROW  
+    BEGIN  
+		update tbbodega set disponibles=disponibles+OLD.cantidad, reservados = reservados-OLD.cantidad where codigo = OLD.codigo_articulo;
+	END$$
+DELIMITER ;
