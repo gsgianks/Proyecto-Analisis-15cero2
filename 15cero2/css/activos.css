@@ -1,3 +1,9 @@
+.message-empty{margin:2em auto; border:thin solid lightgrey;width:50%;padding:2em;background-color:#f9f9f9;border-radius:6px;box-shadow:0 0 3px lightgrey}
+.message-empty > p{color:grey;font-weight:600;font-family;font-family:'Raleway';}
+.message-empty .action{font-size: medium}
+.message-empty button{background: lightblue !important;}
+.message-empty .reminder{font-size: small;color: #F76262;}
+
 aside.aside-left{float: left;height: 90vh;border-right:1px solid lightgrey;padding:1em;width:15%;}
 .aside-left a{color:#f6921e;text-decoration:none;}
 .aside-left,.aside-left>h3{font-size: medium;padding: .5em .2em}

@@ -76,29 +76,25 @@
                     </form>
                 </aside>
 
-                    <div class="table-stock-container">
-                        <button class="btn" onclick="showAddActive()"><span>+</span>Agregar activo</button>
-                        <button class="btn" onclick="showAddActive()"><span>+</span>Agregar activo</button>
+                <div class="table-stock-container">
+                    <?php
+                        $activos=seleccionarActivos(1,0);
+                        $isEmpty=empty($activos);
+                        if(!$isEmpty){
+                    ?>
+                    <button class="btn" onclick="showAddActive()"><span>+</span>Agregar activo</button>
 
-                        <form>
                         <table class="table-stock">
                             <thead>
                                 <tr>
-                                    <th></th>
-                                    <th>Cod.</th>
-                                    <th>Descripcion</th>
-                                    <th>Precio</th>
-                                    <th>Estado</th>
-                                    <th></th>
+                                    <!--<th></th>-->
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                    $activos=seleccionarActivos(1,0);
-                                    if(!empty($activos)){
-                                    for ($i=0; $i < count($activos); $i++) { ?>
+
+                                <!-- Recorrer el array de los activos -->
+                                <?php for ($i=0; $i < count($activos); $i++) { ?>
                                 <tr id="<?php echo $activos[$i][0]; ?>">
-                                    <td><div class="form-group"><input type="radio" onclick="alert('clicked')" onchange="alert('changed')"></div></td>
                                     <td><?php echo $activos[$i][1]; ?></td>
                                     <td><?php echo $activos[$i][3]; ?></td>
                                     <td><?php echo $activos[$i][4]; ?></td>
@@ -113,10 +109,19 @@
                                             </li>
                                         </ul>
                                     </td>
-                                </tr><?php } } else {echo "No hay activos en este momento";} ?>
+                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
-                        </form>
+                        <?php }
+                        echo print_r($activos);?>
+                        <div class="message-empty" style="display:<?php echo ($isEmpty)?'block':'none' ?>">
+                                <p>
+                                    No hay activos es este momento.<br>
+                                    <span class="action">Haga click <button class="btn" type="button" onclick="showAddActive()">aquí</button> para agregar nuevos activos.</span><br>
+                                    <span class="reminder">*Recuerde que es necesario que hayan categorías y subcategorías</span>
+                                </p>
+                        </div>
                     </div>
             </section>
 
@@ -126,6 +131,8 @@
 
         </div>
 
+
+        <!--                      MODAL DE AGREGAR ACTIVOS   -------------------------->
         <div id="id-activo" class="modal">
             <!-- Modal Content -->
             <div class="modal-content animate">
@@ -159,9 +166,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="categorias">Categoría</label>
-                                <select class="form-control" id="categorias-add" name="categoria" onchange="cambiarSubcategorias($(this).val(),$('select#subcategorias-add'))" required>
+                                <select class="form-control" id="categorias-add" name="categoria" onchange="cambiarSubcategorias($(this).val(),$('select#subcategorias-add'))" oninvalid="this.setCustomValidity('Se necesita agregar una categoria')" required>
                                     <?php
                                         $_cats=cargarCategorias();
+                                        $_fst_cat=$_cats[0][0];
                                         if(empty($_cats)){
                                             echo '<option value="">Sin categorías</option>';
                                         }
@@ -173,7 +181,18 @@
                                 </select>
 
                                 <label for="subcategorias">Subcategoría</label>
-                                <select class="form-control" id="subcategorias-add" name="subcategorias" required oninvalid="this.setCustomValidity('Se necesita agregar una subcategoria')"></select>
+                                <select class="form-control" id="subcategorias-add" name="subcategorias" required oninvalid="this.setCustomValidity('Se necesita agregar una subcategoria')">
+                                    <?php
+                                        $_subcats=cargarSubcategorias($_fst_cat,false);
+                                        if(empty($_subcats)){
+                                            echo '<option value="">Sin subcategorías</option>';
+                                        }
+                                        else{
+                                        foreach ($_subcats as $_subcategoria) {
+                                    ?>
+                                        <option value="<?php echo $_subcategoria[0] ?>" ><?php echo $_subcategoria[1]; ?></option>
+                                    <?php } } ?>
+                                </select>
                             </div>
                             <button class="btn btn-primary" type="submit" >Agregar</button>
                         </form>

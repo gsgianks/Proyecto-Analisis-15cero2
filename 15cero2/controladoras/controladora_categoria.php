@@ -8,7 +8,7 @@
                 agregarCategoria();
                 break;
 			case 'cargarSubcategorias':
-	            cargarSubcategorias($_POST['id']);
+	            cargarSubcategorias($_POST['id'],true);
 	            break;
 			case 'eliminarCategoria':
 				eliminarCategoria();
@@ -19,7 +19,7 @@
            }
     }
 
-	function cargarSubcategorias($id){
+	function cargarSubcategorias($id,$ajax){
 
 		$conn = getConnection();
         $sql = "select * from tbcategoria where IdCategoria=".$id.";";
@@ -39,10 +39,12 @@
 
         $conn->close();
 
-        header('Content-type: application/json; charset=utf-8');
-        echo json_encode($array);
-		exit();
-
+		if($ajax){
+	        header('Content-type: application/json; charset=utf-8');
+	        echo json_encode($array);
+			exit();
+		}
+		else{return $array;}
 	}
 
 	function agregarCategoria(){

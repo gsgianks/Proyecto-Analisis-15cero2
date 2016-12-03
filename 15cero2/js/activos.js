@@ -4,9 +4,6 @@ $(document).ready(
         alertify.set('confirm','transition', 'fade');
         alertify.set('notifier','position', 'top-right');
         if($('.nav-alerts').text()!=''){alertify.notify($('.nav-alerts').text(),$('.nav-alerts').attr('type'),3);}
-
-        // alert("hola");
-
     }
 );
 
@@ -40,13 +37,6 @@ function showAddCategory(){
 
 function showEditActive(_id,_cod,_desc,_precio){
     //$('.form,.form>*').css({'visibility':'hidden'});
-    $("#modificar-activo").css("display","block");
-    formulario=$('.editar-activo');
-
-    formulario.css({'visibility':'initial'});
-    formulario.find('input[name=id]').val(_id);
-    formulario.find('input[name=desc]').val(_desc);
-    formulario.find('input[name=precio]').val(_precio);
 
     $.ajax({
         type:'post',
@@ -120,7 +110,11 @@ function eliminarActivo(_id){
                 dataType:'json',
                 success:function(resp){
                     if(resp.msg==='true'){
-                        $('#'+_id).fadeOut(1000);
+                        $('tr#'+_id).fadeOut( 500, function() {this.remove();});
+                        if($('.table-stock > tbody > tr').length===1){
+                            $('.table-stock').remove();
+                            $('.message-empty').fadeIn();
+                        }
                         alertify.notify("Activo Eliminado","success",3);
                     }
                     else {alertify.notify("Ocurrió un error en la operación","error",3);}
@@ -163,7 +157,7 @@ function eliminarActivo(_id){
             success:function(resp){
                 content="";
                 for(i=0; i<resp.length;i++){
-                    content+="<tr><td>"+resp[i][1]+"</td><td>"+resp[i][3]+"</td><td>"+resp[i][4]+"</td><td><a href='#' onclick='showEditActive()'>Editar</a><a href='#' onclick='eliminarActivo("+resp[i][0]+",this)'>Eliminar</a></td></tr>";
+                    content+="<tr><td>"+resp[i][1]+"</td><td>"+resp[i][3]+"</td><td>"+resp[i][4]+"</td><td><a href='#' onclick='showEditActive()'>Cambiar Estado</a><a href='#' onclick='eliminarActivo("+resp[i][0]+",this)'>Eliminar</a></td></tr>";
                 }
                 content="<tbody>"+content+"</tbody>";
                 table_content.replaceWith($(content));
