@@ -1,3 +1,7 @@
+#edit-active-status .form-group.status{margin:1em 0}
+#edit-active-status .form-group.status select{width: 85%}
+#edit-active-status .form-group.status label{margin-right:.5em;}
+
 .message-empty{margin:2em auto; border:thin solid lightgrey;width:50%;padding:2em;background-color:#f9f9f9;border-radius:6px;box-shadow:0 0 3px lightgrey}
 .message-empty > p{color:grey;font-weight:600;font-family;font-family:'Raleway';}
 .message-empty .action{font-size: medium}
@@ -30,7 +34,8 @@ table>thead>tr{background: gray;color:#FFF;font-size: initial;}
 table{width: 100%;border-collapse: collapse}
 table tbody td{text-align: center;font-size: medium}
 table tbody tr{border: 1px solid lightgray}
-table td,table th{padding: .8em}
+table td,table th{padding: 6px}
+table td:nth-child(2){text-align: left}
 table>tbody>tr:hover{background: #f4f4f4}
 
 ul{list-style: none}

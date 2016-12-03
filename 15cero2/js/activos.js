@@ -35,38 +35,18 @@ function showAddCategory(){
     $('.add-category, .add-category > *').css({'visibility':'initial'});
 }
 
-function showEditActive(_id,_cod,_desc,_precio){
-    //$('.form,.form>*').css({'visibility':'hidden'});
+function showEditActive(_cod,_desc,_precio,_cant){
+    $("#modificar-activo").css("display","block");
 
-    $.ajax({
-        type:'post',
-        url:'./controladoras/controladora_categoria.php',
-        data:{Id:_id,consulta:'cargarCategoria_y_Subcategoria'},
-        dataType:'json',
-        success:function(resp){
-            formulario.find('select#categorias-edit>option[value='+resp.data['idCat']+']').attr('selected','selected');
-            $.ajax({
-                type:'post',
-                async:false,
-                url:'./controladoras/controladora_categoria.php',
-                data:{id:resp.data['idCat'],consulta:'cargarSubcategorias'},
-                dataType:'json',
-                success:function(subs){
-                    option="";
-                    for(i=0; i<subs.length; i++){
-                        option+="<option value='"+subs[i][0]+"'>"+subs[i][1]+"</option>";
-                    }
-                    $('select#subcategorias-edit').append(option);
-                },
-                error:function(err){alert('Ocurrió un error: '+err);}
-            });
-            formulario.find('select#subcategorias-edit>option[value='+resp.data['idSub']+']').attr('selected','selected');
-            formulario.find('select#estado>option[value='+resp.data['estado']+']').attr('selected','selected');
-        },
-        error:function(err){alert('Ocurrió un error: '+err);}
-    });
-
+    form=$('#edit-active');
+    form.find('input[name=cod]').val(_cod);
+    form.find('input[name=desc]').val(_desc);
+    form.find('input[name=precio]').val(_precio);
+    form.find('input[name=cant]').val(_cant);
+    form.find('input[name=cant]').attr('max',_cant);
+    form.find('input[name=cant]').attr('min','0');
 }
+
 function showAddActive(){
     //alert("activo add");
     //$('.form,.form>*').css({'visibility':'hidden'});
@@ -191,4 +171,19 @@ function eliminarActivo(_id){
         });
 
         $(elm).addClass("selected");
+    }
+
+    function showEditActiveStatus(_cod,_cant){
+        $("#modificar-activo-estado").css("display","block");
+        form=$('#edit-active-status');
+        form.find('input[name=cod]').val(_cod);
+        txt=form.find('.available-stat').text();
+        form.find('.available-stat').text(txt+=' '+_cant);
+        form.find('input[name=cant]').attr('min','0');
+        form.find('input[name=cant]').attr('max',_cant);
+    }
+
+    function cambiarEstados(_cod, _buenos,_regulares,_malos,_selected){
+        form=$('#edit-active-status');
+        form.find('input[name=cant]').val();
     }

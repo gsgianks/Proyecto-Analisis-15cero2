@@ -82,12 +82,19 @@
                         $isEmpty=empty($activos);
                         if(!$isEmpty){
                     ?>
-                    <button class="btn" onclick="showAddActive()"><span>+</span>Agregar activo</button>
+                    <button class="btn" onclick="showAddActive()"><span>+</span>Agregar nuevo activo</button>
 
                         <table class="table-stock">
                             <thead>
                                 <tr>
-                                    <!--<th></th>-->
+                                    <th>Cód.</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Buenos</th>
+                                    <th>Regulares</th>
+                                    <th>Malos</th>
+                                    <th>Total</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,15 +102,20 @@
                                 <!-- Recorrer el array de los activos -->
                                 <?php for ($i=0; $i < count($activos); $i++) { ?>
                                 <tr id="<?php echo $activos[$i][0]; ?>">
+                                    <td><?php echo $activos[$i][0]; ?></td>
                                     <td><?php echo $activos[$i][1]; ?></td>
+                                    <td><?php echo $activos[$i][2]; ?></td>
                                     <td><?php echo $activos[$i][3]; ?></td>
                                     <td><?php echo $activos[$i][4]; ?></td>
+                                    <td><?php echo $activos[$i][5]; ?></td>
+                                    <td><?php echo $activos[$i][6]; ?></td>
                                     <td>
                                         <ul class="options">
                                             <li>
                                                 Opciones
                                                 <ul>
-                                                    <li><button onclick="showEditActive('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][3]; ?>','<?php echo $activos[$i][4]; ?>')">Editar</button></li>
+                                                    <li><button onclick="showEditActive('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][3]; ?>','<?php echo $activos[$i][6]; ?>')">Modificar</button></li>
+                                                    <li><button onclick="showEditActiveStatus('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][3]; ?>')">Cambiar Estado</button></li>
                                                     <li><button onclick="eliminarActivo(<?php echo $activos[$i][0]; ?>)">Eliminar</button></li>
                                                 </ul>
                                             </li>
@@ -208,11 +220,14 @@
                 <span onclick="document.getElementById('modificar-activo').style.display='none'" class="close" title="Close Modal">&times;</span>
 
                     <div class="activo-form form editar-activo">
-                        <form class="editar-activo" action="controladoras/ActivosController.php" method="post">
+                        <form class="editar-activo" action="controladoras/ActivosController.php" method="post" id="edit-active">
                             <input type="hidden" name="consulta" value="editarActivo">
-                            <input type="hidden" name="id">
                             <h3>Modificar Activo</h3>
                             <hr>
+                            <div class="form-group">
+                                <label for="cod">Código</label>
+                                <input class="form-control" type="text" name="cod" required disabled>
+                            </div>
                             <div class="form-group">
                                 <label for="desc">Descripcion</label>
                                 <input class="form-control" type="text" name="desc" required placeholder="Descripcion">
@@ -220,14 +235,6 @@
                             <div class="form-group">
                                 <label for="precio">Precio</label>
                                 <input class="form-control" type="text" name="precio" required placeholder="Precio Unit.">
-                            </div>
-                            <div class="form-group">
-                                <label for="estado">Estado</label>
-                                <select class="form-control" name="estado" id="estado">
-                                    <option value="b">Bueno</option>
-                                    <option value="r">Regular</option>
-                                    <option value="m">Malo</option>
-                                </select>
                             </div>
                             <div class="form-group">
                                 <label for="categorias">Categoría</label>
@@ -241,12 +248,59 @@
                                 <label for="subcategorias">Subcategoría</label>
                                 <select class="form-control" id="subcategorias-edit" name="subcategorias"></select>
                             </div>
+                            <div class="form-group">
+                                <input type="number" name="cant">
+                            </div>
                             <button class="btn btn-primary" type="submit" >Guardar</button>
                         </form>
                     </div>
                     <!---------------------------------------------------------------------->
                     <!---------------------------------------------------------------------->
             </div>
+        </div>
+
+            <!--- FORMULARIO EDITAR ACTIVO ESTADO -->
+            <div id="modificar-activo-estado" class="modal">
+                <!-- Modal Content -->
+                <div class="modal-content animate">
+                    <span onclick="document.getElementById('modificar-activo-estado').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+                        <div class="activo-form form editar-activo">
+                            <form class="editar-activo" action="controladoras/ActivosController.php" method="post" id="edit-active-status">
+                                <input type="hidden" name="consulta" value="editarActivo">
+                                <h3>Modificar Estado</h3>
+                                <hr>
+                                <div class="form-group">
+                                    <label for="cod">Código</label>
+                                    <input class="form-control" type="text" name="cod" required disabled>
+                                </div>
+                                <div class="form-group status">
+                                    <label for="estado">Estado</label>
+                                    <hr>
+                                    <label for="estado">De</label>
+                                    <select class="form-control" name="estado-origen">
+                                        <option value="b">Bueno</option>
+                                        <option value="r">Regular</option>
+                                        <option value="m">Malo</option>
+                                    </select>
+                                    <label for="estado">A</label>
+                                    <select class="form-control" name="estado-objetivo">
+                                        <option value="b">Bueno</option>
+                                        <option value="r">Regular</option>
+                                        <option value="m">Malo</option>
+                                    </select>
+                                    <hr>
+                                </div>
+                                <div class="form-group">
+                                    <label class="available-stat">Cant. disponible:</label>
+                                    <input class="form-control" type="number" name="cant">
+                                </div>
+                                <button class="btn btn-primary" type="submit" >Guardar</button>
+                            </form>
+                        </div>
+                        <!---------------------------------------------------------------------->
+                        <!---------------------------------------------------------------------->
+                </div>
         </div>
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
