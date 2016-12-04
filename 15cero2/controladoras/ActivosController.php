@@ -8,17 +8,22 @@ if (isset($_POST['consulta'])) {
         case 'agregarActivo':
         agregarActivo();
         break;
-        case 'eliminarActivo':
-        eliminarActivo();
+        case 'eliminarActivos':
+        eliminarActivos();
         case 'selectPorCategoria':
         selectPorCategoria();
         break;
         case 'selectPorCategoria2':
         selectPorCategoria2();
         break;
+        case 'editarActivos':
+        editarActivos();
+        break;
         case 'editarActivoEstado':
         editarActivoEstado();
-        break;
+        /*case 'consultarActivo':
+        consultarActivo();
+        break;*/
         case 'seleccionarActivos':
         seleccionarActivos(1,0);
         break;
@@ -40,12 +45,14 @@ function seleccionarSinCategoria(){
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $activos[$cont][0] = $row['Id'];
-            $activos[$cont][1] = $row['Codigo'];
-            $activos[$cont][2] = $row['Id_Categoria'];
-            $activos[$cont][3] = $row['Descripcion'];
-            $activos[$cont][4] = $row['Precio'];
-            $activos[$cont][5] = $row['Estado'];
+            $activos[$cont][0] = $row['Codigo'];
+            $activos[$cont][1] = $row['Descripcion'];
+            $activos[$cont][2] = $row['Precio'];
+            $activos[$cont][3] = $row['Buenos'];
+            $activos[$cont][4] = $row['Regulares'];
+            $activos[$cont][5] = $row['Malos'];
+            $activos[$cont][6] = $row['Total'];
+            $activos[$cont][7] = $row['sub'];
             $cont ++;
         }
 
@@ -64,7 +71,8 @@ function editarActivoEstado(){
     $conn = getConnection();
     //1- Select
     //2- InsertarActivo
-    $sql = "call paAdministrarArticulo(3,".$_POST['cant'].",null,null,null,null,'".$_POST['estado']."');";
+    $sql = "call paAdministrarArticulo(3,".$_POST['cant'].",'".$_POST['cod']."',null,null,null,'".$_POST['prev_estado'].$_POST['estado']."');";
+    //echo "call paAdministrarArticulo(3,".$_POST['cant'].",'".$_POST['cod']."',null,null,null,'".$_POST['prev_estado'].$_POST['estado']."');";
 
     if ($conn->query($sql) === TRUE) {
         $conn->close();
@@ -76,38 +84,81 @@ function editarActivoEstado(){
     }
 }
 
-function agregarActivo(){
-
+function editarActivos(){
     //echo "agregarActivo";
     $conn = getConnection();
     //1- Select
     //2- InsertarActivo
+    $sql = "call paAdministrarArticulo(9,null,'".$_POST['cod']."',".$_POST['subcategorias'].",'".$_POST['desc']."',".$_POST['precio'].",null);";
 
-    //$num=(int)$_POST['cant'];
+    if ($conn->query($sql) === TRUE) {
+        $conn->close();
+        header('Location: ../activos.php?msg=success');
+    }
+    else{
+        $conn->close();
+        header('Location: ../activos.php?msg=error');
+    }
+}
+
+/*function consultarActivo(){
+
+    //echo "agregarActivo";
+    //1- Select
+    $conn = getConnection();
+    //2- InsertarActivo
+
+    $sql = "call paAdministrarArticulo(10,null,'".$_POST['codigo']."',null,null,null,null);";
+
+    $cont = 0;
+    $consulta=null;
+    $result=$conn->query($sql);
+    while($row = $result->fetch_assoc()) {
+        $consulta = $row['result'];
+    }
+    $conn->close();
+
+    if($consulta==='0'){
+        header('Content-type: application/json; charset=utf-8');
+        echo json_encode(["success"]);
+    }
+    else{
+        header('Content-type: application/json; charset=utf-8');
+        echo json_encode(["error"]);
+    }
+}*/
+
+function agregarActivo(){
+    $conn = getConnection();
+
     for($i=0;$i<$_POST['cant'];$i++){
         $sql = "call paAdministrarArticulo(2,null,'".$_POST['codigo']."',".$_POST['subcategorias'].",'".$_POST['descripcion']."',".$_POST['precio'].",'".$_POST['estado']."');";
         if ($conn->query($sql) != TRUE) {
-            header('Location: ../activos.php?msg=error&nose='.(int)$_POST['cant']);
+            $conn->close();
+            header('Location: ../activos.php?msg=error');
         }
     }
-
     $conn->close();
-    header('Location: ../activos.php?msg=success&nose='.(int)$_POST['cant']);
+    header('Location: ../activos.php?msg=success');
 }
 
-function eliminarActivo(){
+function eliminarActivos(){
     $conn=getConnection();
-    $sql="call paAdministrarArticulo(4,".$_POST['id'].",null,null,null,null,null);";
-    $dataResponse=[];
-    if($conn->query($sql)===TRUE){
-        $dataResponse=['msg'=>'true'];
-    }
-    else{$dataResponse=['msg'=>'false'];}
-    $conn->close();
+    $sql="call paAdministrarArticulo(4,".$_POST['cant'].",'".$_POST['cod']."',null,null,null,'".$_POST['estado']."');";
 
-    header('Content-type: application/json; charset=utf-8');
-    echo json_encode($dataResponse);
-    exit();
+    echo "call paAdministrarArticulo(4,".$_POST['cant'].",'".$_POST['cod']."',null,null,null,'".$_POST['estado']."');";
+
+    if($conn->query($sql)===TRUE){
+        $conn->close();
+        header('Location: ../activos.php?msg=success');
+    }
+    else{
+        $conn->close();
+        header('Location: ../activos.php?msg=error');
+    }
+
+    /*echo json_encode($dataResponse);
+    exit();*/
 }
 
 function seleccionarActivos($identificador, $categoria){
@@ -126,6 +177,7 @@ function seleccionarActivos($identificador, $categoria){
             $activos[$cont][4] = $row['Regulares'];
             $activos[$cont][5] = $row['Malos'];
             $activos[$cont][6] = $row['Total'];
+            $activos[$cont][7] = $row['sub'];
             $cont ++;
         }
 
@@ -140,8 +192,6 @@ function seleccionarActivos($identificador, $categoria){
 
 }
 
-function test(){echo "paAdministrarArticulo(7,".$_POST['Id'].",null,null,null,null,null);";}
-
 function selectPorCategoria2(){
 
     $conn = getConnection();
@@ -149,29 +199,22 @@ function selectPorCategoria2(){
     $result = $conn->query($sql);
     $activos = [];
     $cont = 0;
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $activos[$cont][0] = $row['Id'];
-            $activos[$cont][1] = $row['Codigo'];
-            $activos[$cont][2] = $row['Id_Categoria'];
-            $activos[$cont][3] = $row['Descripcion'];
-            $activos[$cont][4] = $row['Precio'];
-            $activos[$cont][5] = $row['Estado'];
-            $cont ++;
-        }
-        $json['Type'] = 'selectPorCategoria';//here
-        $json['Success'] = true;
-        $json['Activos'] = $activos;
-        $json['msg'] = 'success';
-    }else{
-        $json['Type'] = 'selectPorCategoria';
-        $json['Success'] = false;
-        $json['Activos'] = $activos;
-        $json['msg'] = 'error';
+
+    while($row = $result->fetch_assoc()) {
+        $activos[$cont][0] = $row['Codigo'];
+        $activos[$cont][1] = $row['Descripcion'];
+        $activos[$cont][2] = $row['Precio'];
+        $activos[$cont][3] = $row['Buenos'];
+        $activos[$cont][4] = $row['Regulares'];
+        $activos[$cont][5] = $row['Malos'];
+        $activos[$cont][6] = $row['Total'];
+        $activos[$cont][7] = $row['sub'];
+        $cont ++;
     }
+
     $conn->close();
     header('Content-type: application/json; charset=utf-8');
-    echo json_encode($json);
+    echo json_encode($activos);
     exit();
 }
 
