@@ -298,7 +298,7 @@
                                     <label>Estado</label>
                                     <hr>
                                     <label for="estado">De</label>
-                                    <select class="form-control" onchange="cambiarEstados(this'#edit-active-status')" name="prev_estado">
+                                    <select class="form-control" onchange="cambiarEstados(this,'#edit-active-status')" name="prev_estado">
                                         <option value="b" selected>Bueno</option>
                                         <option value="r">Regular</option>
                                         <option value="m">Malo</option>
