@@ -38,13 +38,40 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-       
+       alert("pasa prevent");
         var data = $(this).serializeArray();
         var url = $(this).attr("action");
 
-        if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
-            alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
-            ajax(url,data);
+        $.ajax({
+            url: url,
+            type: 'post',
+            dataType: 'json',
+            data: data,
+            success: function (resp) {      
+            alert(resp.Type+" "+resp.Success);        
+                if(resp.Type === "cliente"){
+                    clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
+                }else if(resp.Type === 'evento'){
+                    respEvento(resp.Success, resp.Location);
+                }else if(resp.Type === 'activoEvento'){
+                    respActivoEvento(resp.Success, data);
+                }else if(resp.Type === 'modificarEvento'){
+                    respModificarEvento(resp.Success,resp.Nombre,resp.Evento,resp.FechaIni, resp.FechaFin,resp.Cliente, resp.Ubicacion, resp.nombreCliente);
+                }else if(resp.Type === 'clienteForm'){
+                    respCliente(resp.Success, resp.Id,resp.Name,resp.Correo,resp.Telefono,resp.Direccion);
+                }else if(resp.Type === 'modificarCliente'){
+                    respModificarCliente(resp.Success, resp.IdCliente, resp.Nombre,resp.Correo, resp.Telefono, resp.Direccion);
+                }
+            },
+            error: function (jqXHR, estado, error) {
+                alert('error log');
+                console.log("fallo");
+            }
+        });
+
+       // if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
+         //   alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
+           // ajax(url,data);
             /*if($(this).find('input[name=cantidad]').val() <= $('#cantidad_maxima').text()){
                 alert("paso la prueba");
                 ajax(url,data);
@@ -52,9 +79,9 @@ $(document).ready(function () {
             }else{
                 alert("Cantidad maxima disponible es: "+$('#cantidad_maxima').text());
             }*/
-        }else{
-            ajax(url,data);
-        }
+        //}else{
+          //  ajax(url,data);
+        //}
     });
 });
 
