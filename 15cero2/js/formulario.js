@@ -38,7 +38,20 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-       alert("pasa prevent");
+      /* alert("pasa prevent");
+       alert($(this).children('input[name=consulta]').val());
+       if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
+          alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
+        }
+        if($(this).find('input[name=cantidad]').val() > $('#cantidad_maxima').text()){
+                alert("no paso la prueba");
+        }*/
+
+        if(($(this).children('input[name=consulta]').val() == 'agregarActivosEvento') && (parseInt($(this).find('input[name=cantidad]').val()) > parseInt($('#cantidad_maxima').text()))) {
+          alert("cantidad de activos no disponible");
+        }else{
+
+
         var data = $(this).serializeArray();
         var url = $(this).attr("action");
 
@@ -68,20 +81,20 @@ $(document).ready(function () {
                 console.log("fallo");
             }
         });
-
-       // if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
-         //   alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
-           // ajax(url,data);
-            /*if($(this).find('input[name=cantidad]').val() <= $('#cantidad_maxima').text()){
+}
+        /*if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
+          alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
+            ajax(url,data);
+            if($(this).find('input[name=cantidad]').val() <= $('#cantidad_maxima').text()){
                 alert("paso la prueba");
                 ajax(url,data);
                 alert("despues paso la prueba");
             }else{
                 alert("Cantidad maxima disponible es: "+$('#cantidad_maxima').text());
-            }*/
-        //}else{
-          //  ajax(url,data);
-        //}
+            }
+        }else{
+            ajax(url,data);
+        }*/
     });
 });
 
