@@ -41,7 +41,7 @@ $(document).ready(function () {
     });
 });
 function ajax(urll, datas){
-    //alert(urll+"uusgdbjsdkbvisdkavbn");
+    alert("ajax agregar_cliente");
     $.ajax({
             url: urll,
             type: 'post',
@@ -62,8 +62,6 @@ function ajax(urll, datas){
                     //alert("cantidadActivos "+resp.cantidad);
                     $('#cantidad_maxima').text(resp.cantidad);
                    // $('#cantidad_activos').attr('max',resp.cantidad);
-
-                    alert()
                 }/*else if(resp.Type === 'cargarEvento'){
                     alert("evento recuperado");
                     respCargarEvento(resp.Success, resp.Evento, resp.Nombre, resp.FechaIni, resp.FechaFin,resp.Cliente,resp.Ubicacion,resp.nombreCliente);
@@ -122,7 +120,12 @@ function respEliminarActivoEvento(success, activo){
                     }
                 }
             })            
-        })
+        });
+        //alert($('#activos').val() +"val");
+        if($('#activos').val() != 0){
+            var data = {consulta : 'cantidadActivos',codigo : $('#activos').val()};
+            ajax('controladoras/controladora_evento_activo.php',data); 
+        }
     }else{
         alert('ERROR - algo ocurrió!');
     }

@@ -1,25 +1,29 @@
-function ajax(urll,datas){
+function ajaxFormularios(datas,urll){
 
-    alert("ajax");
+    alert("ajax fomrulario");
 $.ajax({
             url: urll,
             type: 'post',
             dataType: 'json',
             data: datas,
             success: function (resp) {      
-            alert(resp.Type+" "+resp.Success);        
+           // alert(resp.Type+" "+resp.Success);        
                 if(resp.Type === "cliente"){
                     clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
                 }else if(resp.Type === 'evento'){
                     respEvento(resp.Success, resp.Location);
                 }else if(resp.Type === 'activoEvento'){
-                    respActivoEvento(resp.Success, data);
+                    respActivoEvento(resp.Success, datas);
                 }else if(resp.Type === 'modificarEvento'){
                     respModificarEvento(resp.Success,resp.Nombre,resp.Evento,resp.FechaIni, resp.FechaFin,resp.Cliente, resp.Ubicacion, resp.nombreCliente);
                 }else if(resp.Type === 'clienteForm'){
                     respCliente(resp.Success, resp.Id,resp.Name,resp.Correo,resp.Telefono,resp.Direccion);
                 }else if(resp.Type === 'modificarCliente'){
                     respModificarCliente(resp.Success, resp.IdCliente, resp.Nombre,resp.Correo, resp.Telefono, resp.Direccion);
+                }else if(resp.Type === 'cantidadActivos'){
+                    //alert("cantidadActivos "+resp.cantidad);
+                    $('#cantidad_maxima').text(resp.cantidad);
+                   // $('#cantidad_activos').attr('max',resp.cantidad);
                 }
             },
             error: function (jqXHR, estado, error) {
@@ -55,6 +59,9 @@ $(document).ready(function () {
         var data = $(this).serializeArray();
         var url = $(this).attr("action");
 
+
+        ajaxFormularios(data,url);
+/*
         $.ajax({
             url: url,
             type: 'post',
@@ -80,7 +87,7 @@ $(document).ready(function () {
                 alert('error log');
                 console.log("fallo");
             }
-        });
+        });*/
 }
         /*if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
           alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
@@ -147,11 +154,13 @@ function respActivoEvento(success, data){
     if(success === true){
         alertify.notify('Activo Insertado', 'success', 5);
         if($('#table').length=== 0){
-            $('.activos-necesarios').html('<h3>Activos necesarios</h3><table id="table"><tr><td>Id</td><td>Nombre</td><td>Cantidad</td><td>Acci&oacute;n</td></tr><tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><butto style="color: black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr></table>');
+            $('.activos-necesarios').html('<h3>Activos necesarios</h3><table id="table"><tr><td>Id</td><td>Nombre</td><td>Cantidad</td><td>Acci&oacute;n</td></tr><tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button style="color: black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr></table>');
         }else{
             $('#table').append('<tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button style="color:black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr>');
         }
         $('input[name=cantidad]').val('');
+        var data = {consulta : 'cantidadActivos',codigo : $('#activos').val()};
+        ajax('controladoras/controladora_evento_activo.php',data);
     }else{
         // aqui va el msj en alguna etiqueta
         alert("ERROR - algo ocurrio");   
