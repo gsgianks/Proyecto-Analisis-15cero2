@@ -107,6 +107,7 @@
                                                 <li><button onclick="modificarEvento(<?php echo $eventos[$i][0]; ?>)">Modificar</button></li>
                                                 <li><button onclick="eliminarEvento(<?php echo $eventos[$i][0]; ?>)">Eliminar</button></li>
                                                 <li><button onclick="cargarEvento(<?php echo $eventos[$i][0]; ?>)">Informe</button></li>
+                                                <li><button onclick="cargarFactura(<?php echo $eventos[$i][0]; ?>)">Factura</button></li>
                                             </ul>
                                         </li>
                                     </ul>

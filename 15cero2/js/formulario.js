@@ -1,11 +1,13 @@
 function ajax(urll,datas){
+
+    alert("ajax");
 $.ajax({
             url: urll,
             type: 'post',
             dataType: 'json',
             data: datas,
             success: function (resp) {      
-            //alert(resp.Type+" "+resp.Success);        
+            alert(resp.Type+" "+resp.Success);        
                 if(resp.Type === "cliente"){
                     clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
                 }else if(resp.Type === 'evento'){
@@ -42,18 +44,17 @@ $(document).ready(function () {
 
         if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
             alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
-            if($(this).find('input[name=cantidad]').val() <= $('#cantidad_maxima').text()){
+            ajax(url,data);
+            /*if($(this).find('input[name=cantidad]').val() <= $('#cantidad_maxima').text()){
                 alert("paso la prueba");
-                ajax(url,data); 
+                ajax(url,data);
+                alert("despues paso la prueba");
             }else{
                 alert("Cantidad maxima disponible es: "+$('#cantidad_maxima').text());
-            }
+            }*/
         }else{
-            ajax(url,data);    
+            ajax(url,data);
         }
-
-        
-        
     });
 });
 

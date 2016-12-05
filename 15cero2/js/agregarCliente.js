@@ -280,6 +280,12 @@ function cargarEvento(id_even){
     ajax('controladoras/controladora_evento.php',data);*/
 }
 
+function cargarFactura(id_even){
+    alert("evento: "+id_even);
+     window.location = 'Factura.php?e='+id_even;
+    /*var data = {consulta : 'seleccionarEvento',id_event : id_even};    
+    ajax('controladoras/controladora_evento.php',data);*/
+}
 //metodo para mostrar los datos del evento consultado para el informe
 /*function repCargarEvento(success, evento, Nombre, fechaIni, fechaFin,cliente,ubicacion,nombreCliente){
     var data = {consulta: 'seleccionarActivosEventos', id:ide};
