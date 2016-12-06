@@ -75,7 +75,6 @@ $hoy = getdate();
 
 
 			<?php }else{ ?>
-
 				<h3>Activos necesarios</h3>
 				<p>No hay activos asignados</p>
 			<?php } ?>
