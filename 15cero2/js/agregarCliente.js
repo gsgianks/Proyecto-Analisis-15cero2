@@ -33,11 +33,12 @@ $(document).ready(function () {
 
         if($("#categorias").val() != 0){
             //alert("diferente");
-            var datas = {consulta : 'selectPorCategoria', identificador : 10,categoria : $('#categorias').val()};
+            var datas = {consulta : 'selectPorCategoria', identificador : 5,categoria : $('#categorias').val()};
            // alert(datas.consulta +"  -  "+datas.identificador+"   -    "+datas.categoria);
             ajax('controladoras/ActivosController.php', datas);
         }
     });
+
     $("#activos").change(function(){
         //alert("cambio");
         var data = {consulta : 'cantidadActivos',codigo : $('#activos').val()};

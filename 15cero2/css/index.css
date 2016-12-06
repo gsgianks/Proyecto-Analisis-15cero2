@@ -1,0 +1,19 @@
+@media only screen and (min-width: 480px) {
+	section.login-section{
+	  width: 30vw;
+  }	
+}
+@media only screen and (min-width: 900px) {
+	section.login-section{
+	  width: 30vw;
+  }	
+}
+@media only screen and (min-width: 1024px) {
+	section.login-section{
+	  width: 30vw;
+  }	
+}
+
+section.login-section{border-radius: 6px;background-color: #eee;margin: auto;height:initial;overflow: hidden;transition: .5s;}
+.login-form{display: block;width: 70%;margin: auto;overflow: hidden;padding: 1em;}
+.form-title{font-family: 'Raleway';font-size: larger;font-weight: 400;color:grey;text-align: center}
