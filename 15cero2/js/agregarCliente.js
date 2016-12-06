@@ -33,7 +33,7 @@ $(document).ready(function () {
 
         if($("#categorias").val() != 0){
             //alert("diferente");
-            var datas = {consulta : 'selectPorCategoria', identificador : 5,categoria : $('#categorias').val()};
+            var datas = {consulta : 'selectPorCategoria', identificador : 10,categoria : $('#categorias').val()};
            // alert(datas.consulta +"  -  "+datas.identificador+"   -    "+datas.categoria);
             ajax('controladoras/ActivosController.php', datas);
         }
@@ -46,14 +46,14 @@ $(document).ready(function () {
     });
 });
 function ajax(urll, datas){
-   // alert("ajax agregar_cliente");
+   //alert("ajax agregar_cliente");
     $.ajax({
             url: urll,
             type: 'post',
             dataType: 'json',
             data: datas,
             success: function (resp) {
-                //alert("respuesta: "+resp.Type);
+     //           alert("respuesta: "+resp.Type);
                 if(resp.Type === 'selectPorCategoria'){
                     selectPorCategoria(resp.Success,resp.Activos);
                 }else if(resp.Type === 'eliminarActivoEvento'){

@@ -7,7 +7,7 @@ $.ajax({
             dataType: 'json',
             data: datas,
             success: function (resp) {      
-            //alert(resp.Type+" "+resp.Success);        
+            //alert(resp.Type+" "+resp.Success+" "+resp.Consulta);        
                 if(resp.Type === "cliente"){
                     clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
                 }else if(resp.Type === 'evento'){
@@ -102,7 +102,7 @@ function respActivoEvento(success, resp){
     if(success === true){
         alertify.notify('Activo Insertado', 'success', 5);
         if($('#table').length=== 0){
-            $('.activos-necesarios').html('<h3>Activos necesarios</h3><table id="table"><tr><td>Id</td><td>Nombre</td><td>Cantidad</td><td>Acci&oacute;n</td></tr><tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button style="color: black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr></table>');
+            $('.activos-necesarios').html('<h3>Activos necesarios</h3><table id="table"><thead><tr><td>C&oacute;digo</td><td>Nombre</td><td>Cantidad</td><td>Acci&oacute;n</td></thead></tr><tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button style="color: black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr></table>');
         }else{
             var temp = true;
              $("#table tbody tr").each(function (index) {
