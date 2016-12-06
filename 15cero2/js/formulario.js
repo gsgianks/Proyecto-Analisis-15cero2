@@ -7,7 +7,7 @@ $.ajax({
             dataType: 'json',
             data: datas,
             success: function (resp) {      
-            alert(resp.Type+" "+resp.Success+" "+resp.Consulta);        
+            //alert(resp.Type+" "+resp.Success+" "+resp.Consulta);        
                 if(resp.Type === "cliente"){
                     clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
                 }else if(resp.Type === 'evento'){
@@ -228,8 +228,8 @@ function respModificarCliente(success, idCliente, nombre,correo, telefono, direc
 
 function respAgregarServicio(success){
     $('#id-service').css("display", "none");
-    alert("resp Servicio");
-    alert($("#id-service").find("select").val());
+    //alert("resp Servicio");
+    //alert($("#id-service").find("select").val());
     if(success === true){
         alertify.notify('Servicio Insertado', 'success', 5);
         if($('#table').length=== 0){

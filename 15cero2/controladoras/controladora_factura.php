@@ -13,7 +13,7 @@ require_once ("database.php");
 function agregarServicio(){
         $conn = getConnection();
         $sql = "call paAdministrarServicios(2, null,".$_POST['evento'].",'".$_POST['servicio']."',".$_POST['costo'].");";
-        $jsondata['Consulta'] = "call paAdministrarServicios(2, null,".$_POST['evento'].",'".$_POST['servicio']."', ".$_POST['costo'].");";
+        //$jsondata['Consulta'] = "call paAdministrarServicios(2, null,".$_POST['evento'].",'".$_POST['servicio']."', ".$_POST['costo'].");";
         if ($conn->query($sql) === TRUE) {
             $jsondata['Success'] = true;
         }else{
