@@ -6,6 +6,7 @@
         <a href="insertar_cliente.php">Clientes</a>
         <a href="activos.php">Activos</a>
         <a href="bodega.php">Bodega</a>
+        <a href="logout.php">Salir</a>
     </div>
 
     <?php if(isset($_GET['msg'])){

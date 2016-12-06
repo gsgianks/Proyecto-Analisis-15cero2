@@ -227,12 +227,12 @@ function selectPorCategoria(){
     $cont = 0;
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            $activos[$cont][0] = $row['Id'];
+            //$activos[$cont][0] = $row['Id'];
             $activos[$cont][1] = $row['Codigo'];
-            $activos[$cont][2] = $row['Id_Categoria'];
+            //$activos[$cont][2] = $row['Id_Categoria'];
             $activos[$cont][3] = $row['Descripcion'];
-            $activos[$cont][4] = $row['Precio'];
-            $activos[$cont][5] = $row['Estado'];
+            //$activos[$cont][4] = $row['Precio'];
+            //$activos[$cont][5] = $row['Estado'];
             $cont ++;
         }
         $json['Type'] = 'selectPorCategoria';//here

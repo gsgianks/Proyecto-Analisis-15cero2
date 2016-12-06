@@ -23,6 +23,7 @@ function validarLogueo(){
                 if(($_POST['user'] === $row['Usuario'])&& ($_POST['pass']===$row['Contrasena'])){
                     $jsondata['success'] = true;
                     $_SESSION['logged']=true;
+                    $_SESSION['user'] = $_POST['user'];
                 }
                 else{
                     $jsondata['success'] = false;

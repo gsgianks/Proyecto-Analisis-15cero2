@@ -34,9 +34,9 @@ $hoy = getdate();
             		<p>Fecha Inicio: <?php echo $eventos[0][2]; ?></p>
             		<p>Fecha Final: <?php echo $eventos[0][3]; ?></p>
             	</div>
-
+            <?php require_once 'controladoras/controladora_factura.php'; $factura = selectFactura($_GET["e"]); $servicios = selectServicios($factura); ?>
             <?php require_once 'controladoras/controladora_evento_activo.php'; $activos = seleccionarActivosEventosInforme($_GET["e"]);
-			if($activos != null){ ?>
+			if($activos != null || $servicios != null){ ?>
 				<h3 id="detail_event">Detalle del evento</h3>
 	            <table id="informe_activos"  border="2">
 		            <tr>
@@ -46,6 +46,15 @@ $hoy = getdate();
 		                <td>Precio Unitario</td>
 		                <td>Total</td>
 		            </tr>
+		            <?php for($i = 0;$i<count($servicios);$i++){ ?>
+		                <tr>
+		                	<td>Serv</td>
+		                    <td><?php echo $servicios[$i][0]; ?></td>
+		                    <td>1</td>
+		                    <td><?php echo $servicios[$i][1]; ?></td>
+		                    <td></td> 
+	                	</tr>
+            		<?php } ?>
 		            <?php for($i = 0;$i<count($activos);$i++){ ?>
 		                <tr>
 		                	<td><?php echo $activos[$i][1]; ?></td>
@@ -54,7 +63,6 @@ $hoy = getdate();
 		                    <td><?php echo $activos[$i][0]; ?></td>
 		                    <td></td>              
 	                	</tr> 
-	            
             		<?php } ?>
             		<tr>
 		                <td>Total</td>

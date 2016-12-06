@@ -22,6 +22,7 @@ table>tbody>tr:hover{background: #f4f4f4}
 .div-modal2>table{width: 100%;margin-bottom: 20px;}
 .div-modal3{overflow: hidden;width: 100%;}
 .div-modal4,.div-editar-cliente{margin: auto; width: 300px;} /*sdbvojsdknm*/
+.div-service{padding: 20px}
 
 .form-left{float: left; width: 45%; margin-left: 25%;}
 .form-right{float: right; width: 45%; margin-right: 2%;}

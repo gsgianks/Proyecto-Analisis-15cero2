@@ -54,3 +54,4 @@ ul{list-style: none}
 .btn.right{margin:0;position: relative;float: right}
 a.btn{border: 1px solid lightgray;padding:0px 5px;border-radius: 3px;color: #666;cursor:pointer}
 .modal-content{width: 25%}
+#id03>.modal-content{width: 40%};

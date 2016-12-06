@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //alert("informe");
     sumarTotal("informe_activos",4);
 });
 

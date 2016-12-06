@@ -24,6 +24,8 @@ $.ajax({
                     //alert("cantidadActivos "+resp.cantidad);
                     $('#cantidad_maxima').text(resp.cantidad);
                    // $('#cantidad_activos').attr('max',resp.cantidad);
+                }else if(resp.Type === 'agregarServicio'){
+                    respAgregarServicio(resp.Success);
                 }
             },
             error: function (jqXHR, estado, error) {
@@ -221,5 +223,22 @@ function respModificarCliente(success, idCliente, nombre,correo, telefono, direc
         //$('.div-editar-cliente input[type=submit]').val('Agregar');
     }else{
         alert('Error: algo ocurrio');
+    }
+}
+
+function respAgregarServicio(success){
+    $('#id-service').css("display", "none");
+    alert("resp Servicio");
+    alert($("#id-service").find("select").val());
+    if(success === true){
+        alertify.notify('Servicio Insertado', 'success', 5);
+        if($('#table').length=== 0){
+            $('.activos-necesarios').html('<h3>Activos necesarios</h3><table id="table"><thead><tr><td>C&oacute;digo</td><td>Nombre</td><td>Cantidad</td><td>Acci&oacute;n</td></thead></tr><tr><td>Serv</td><td>'+$("#id-service").find("select").val()+'</td><td>1</td><td><button style="color: black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr></table>');
+        }else{            
+            $('#table').append('<tr><td>Serv</td><td>'+$("#id-service").find("select").val()+'</td><td>1</td><td><button style="color:black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr>');
+        }
+    }else{
+        // aqui va el msj en alguna etiqueta
+        alert("ERROR - algo ocurrio");   
     }
 }

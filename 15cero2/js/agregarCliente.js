@@ -74,7 +74,7 @@ function ajax(urll, datas){
                
             },
             error: function (jqXHR, estado, error) {
-                alert('error varo gay');
+                alert('error log');
                 console.log("fallo");
             }
     });
@@ -282,14 +282,14 @@ function respEliminarCliente(success,idCliente){
 
 //metodo para cargar los datos del evento en el informe a traves de ajax
 function cargarEvento(id_even){
-    alert("evento: "+id_even);
+    //alert("evento: "+id_even);
      window.location = 'informe_evento.php?e='+id_even;
     /*var data = {consulta : 'seleccionarEvento',id_event : id_even};    
     ajax('controladoras/controladora_evento.php',data);*/
 }
 
 function cargarFactura(id_even){
-    alert("evento: "+id_even);
+    //alert("evento: "+id_even);
      window.location = 'Factura.php?e='+id_even;
     /*var data = {consulta : 'seleccionarEvento',id_event : id_even};    
     ajax('controladoras/controladora_evento.php',data);*/
@@ -299,3 +299,9 @@ function cargarFactura(id_even){
     var data = {consulta: 'seleccionarActivosEventos', id:ide};
     ajax('controladoras/controladora_evento_activo.php',data);
 }*/
+function addService(factura){
+
+    $('#id-service').find('input[name=evento]').val(factura);
+    //alert(factura);
+    $('#id-service').css("display", "block"); 
+}
