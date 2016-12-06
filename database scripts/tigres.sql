@@ -204,3 +204,17 @@ CREATE TRIGGER after_delete_evento_articulo
 		update tbbodega set disponibles=disponibles+OLD.cantidad, reservados = reservados-OLD.cantidad where codigo = OLD.codigo_articulo;
 	END$$
 DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER after_update_evento_articulo
+    BEFORE UPDATE ON `tbeven-art` FOR EACH ROW  
+    BEGIN  
+		-- update tbbodega set disponibles=disponibles-OLD.cantidad, reservados = reservados+OLD.cantidad where codigo = OLD.codigo_articulo;
+        insert into hola values(OLD.cantidad,New.cantidad);
+	END$$
+DELIMITER ;
+
+
+use db15cero2;
+
+call paAdministrarEven_Art(5,null,85,null);

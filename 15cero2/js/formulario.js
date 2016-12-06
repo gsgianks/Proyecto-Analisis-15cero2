@@ -1,19 +1,19 @@
 function ajaxFormularios(datas,urll){
 
-    alert("ajax fomrulario");
+    //alert("ajax fomrulario");
 $.ajax({
             url: urll,
             type: 'post',
             dataType: 'json',
             data: datas,
             success: function (resp) {      
-           // alert(resp.Type+" "+resp.Success);        
+            //alert(resp.Type+" "+resp.Success);        
                 if(resp.Type === "cliente"){
                     clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
                 }else if(resp.Type === 'evento'){
                     respEvento(resp.Success, resp.Location);
                 }else if(resp.Type === 'activoEvento'){
-                    respActivoEvento(resp.Success, datas);
+                    respActivoEvento(resp.Success, resp);
                 }else if(resp.Type === 'modificarEvento'){
                     respModificarEvento(resp.Success,resp.Nombre,resp.Evento,resp.FechaIni, resp.FechaFin,resp.Cliente, resp.Ubicacion, resp.nombreCliente);
                 }else if(resp.Type === 'clienteForm'){
@@ -33,7 +33,6 @@ $.ajax({
         });
 }
 
-
 $(document).ready(function () {
     alertify.set('confirm','transition', 'fade');
     alertify.set('notifier','position', 'top-right');
@@ -42,66 +41,15 @@ $(document).ready(function () {
 
         e.preventDefault();
 
-      /* alert("pasa prevent");
-       alert($(this).children('input[name=consulta]').val());
-       if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
-          alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
-        }
-        if($(this).find('input[name=cantidad]').val() > $('#cantidad_maxima').text()){
-                alert("no paso la prueba");
-        }*/
-
         if(($(this).children('input[name=consulta]').val() == 'agregarActivosEvento') && (parseInt($(this).find('input[name=cantidad]').val()) > parseInt($('#cantidad_maxima').text()))) {
           alert("cantidad de activos no disponible");
         }else{
 
+            var data = $(this).serializeArray();
+            var url = $(this).attr("action");
 
-        var data = $(this).serializeArray();
-        var url = $(this).attr("action");
-
-
-        ajaxFormularios(data,url);
-/*
-        $.ajax({
-            url: url,
-            type: 'post',
-            dataType: 'json',
-            data: data,
-            success: function (resp) {      
-            alert(resp.Type+" "+resp.Success);        
-                if(resp.Type === "cliente"){
-                    clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
-                }else if(resp.Type === 'evento'){
-                    respEvento(resp.Success, resp.Location);
-                }else if(resp.Type === 'activoEvento'){
-                    respActivoEvento(resp.Success, data);
-                }else if(resp.Type === 'modificarEvento'){
-                    respModificarEvento(resp.Success,resp.Nombre,resp.Evento,resp.FechaIni, resp.FechaFin,resp.Cliente, resp.Ubicacion, resp.nombreCliente);
-                }else if(resp.Type === 'clienteForm'){
-                    respCliente(resp.Success, resp.Id,resp.Name,resp.Correo,resp.Telefono,resp.Direccion);
-                }else if(resp.Type === 'modificarCliente'){
-                    respModificarCliente(resp.Success, resp.IdCliente, resp.Nombre,resp.Correo, resp.Telefono, resp.Direccion);
-                }
-            },
-            error: function (jqXHR, estado, error) {
-                alert('error log');
-                console.log("fallo");
-            }
-        });*/
-}
-        /*if($(this).children('input[name=consulta]').val() == 'agregarActivosEvento'){
-          alert("magia maagia "+$(this).find('input[name=cantidad]').val()+" = "+$('#cantidad_maxima').text());
-            ajax(url,data);
-            if($(this).find('input[name=cantidad]').val() <= $('#cantidad_maxima').text()){
-                alert("paso la prueba");
-                ajax(url,data);
-                alert("despues paso la prueba");
-            }else{
-                alert("Cantidad maxima disponible es: "+$('#cantidad_maxima').text());
-            }
-        }else{
-            ajax(url,data);
-        }*/
+            ajaxFormularios(data,url);
+        }
     });
 });
 
@@ -150,15 +98,29 @@ function respEvento(success,location){
 }
 
 //comentario
-function respActivoEvento(success, data){
+function respActivoEvento(success, resp){
     if(success === true){
         alertify.notify('Activo Insertado', 'success', 5);
         if($('#table').length=== 0){
             $('.activos-necesarios').html('<h3>Activos necesarios</h3><table id="table"><tr><td>Id</td><td>Nombre</td><td>Cantidad</td><td>Acci&oacute;n</td></tr><tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button style="color: black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr></table>');
         }else{
-            $('#table').append('<tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button style="color:black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr>');
+            var temp = true;
+             $("#table tbody tr").each(function (index) {
+                if($('#activos').find(':selected').val() == $($(this).children("td")[0]).text()){
+                    //alert("entro mierda");
+                    temp = false;
+                    $($(this).children("td")[2]).text(parseInt($($(this).children("td")[2]).text())+parseInt(resp.Cantidad));
+                }
+                //alert("*"+$($(this).children("td")[0]).text()+"*=*"+$('#activos').find(':selected').val()+"*");
+            });
+            if(temp){ 
+                $('#table').append('<tr><td>'+$('#activos').val()+'</td><td>'+$('#activos').find(':selected').text()+'</td><td>'+$('input[name=cantidad]').val()+'</td><td><button style="color:black;" name="'+$('#activos').val()+'" onClick="eliminarActivoEvento(this)">Eliminar</button></td></tr>');
+            }
         }
-        $('input[name=cantidad]').val('');
+
+       
+
+        //$('input[name=cantidad]').val('');
         var data = {consulta : 'cantidadActivos',codigo : $('#activos').val()};
         ajax('controladoras/controladora_evento_activo.php',data);
     }else{
@@ -219,7 +181,7 @@ function respCliente(success, id,nombre,correo,telefono,direccion){
         }
         alertify.notify('Cliente Insertado', 'success', 5);
     }else{
-        // aqui va el msj en alguna etiqueta
+        // aqui va el msj en alguna etique
         alert("ERROR - algo ocurrio");   
     }
 }

@@ -8,6 +8,10 @@ $(document).ready(function () {
             $('#id04').css("display", "block");   
         }
     });
+   $("#clientes option[value=0]").click(function(){
+
+            $('#id04').css("display", "block");   
+    });
 
     $("#clientesModal").change(function(){
 
@@ -29,7 +33,7 @@ $(document).ready(function () {
 
         if($("#categorias").val() != 0){
             //alert("diferente");
-            var datas = {consulta : 'selectPorCategoria', identificador : 5,categoria : $('#categorias').val()};
+            var datas = {consulta : 'selectPorCategoria', identificador : 10,categoria : $('#categorias').val()};
            // alert(datas.consulta +"  -  "+datas.identificador+"   -    "+datas.categoria);
             ajax('controladoras/ActivosController.php', datas);
         }
@@ -41,7 +45,7 @@ $(document).ready(function () {
     });
 });
 function ajax(urll, datas){
-    alert("ajax agregar_cliente");
+   // alert("ajax agregar_cliente");
     $.ajax({
             url: urll,
             type: 'post',

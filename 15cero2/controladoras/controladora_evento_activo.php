@@ -27,6 +27,7 @@ function agregarActivosEvento(){
             //header("Location: ../insertar_activo_evento.php?e=".$_POST["evento"]);
             $jsondata['Type'] = 'activoEvento';
             $jsondata['Success'] = true;
+            $jsondata['Cantidad'] = $_POST['cantidad'];
         }else{
             $jsondata['Type'] = 'activoEvento';
             $jsondata['Success'] = false;
