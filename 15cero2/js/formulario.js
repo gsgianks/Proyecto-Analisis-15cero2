@@ -7,7 +7,7 @@ $.ajax({
             dataType: 'json',
             data: datas,
             success: function (resp) {      
-            //alert(resp.Type+" "+resp.Success+" "+resp.Consulta);        
+            alert(resp.Type+" "+resp.Success+" "+resp.Consulta);        
                 if(resp.Type === "cliente"){
                     clienteDesdeEnvento(resp.Success,resp.Id,resp.Name);
                 }else if(resp.Type === 'evento'){
