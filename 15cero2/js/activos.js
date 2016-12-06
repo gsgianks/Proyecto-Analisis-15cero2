@@ -27,6 +27,7 @@ function sincategoria(elm){
                     "<td>"+resp[i][5]+"</td>"+
                     "<td>"+resp[i][6]+"</td>"+
                     "<td>"+
+                    "<td><button type='button' class='btn' onclick='showAddActiveExist(\""+resp[i][0]+"\",\""+resp[i][1]+"\",\""+resp[i][2]+"\",\""+resp[i][6]+"\",\""+resp[i][7]+"\")'>+</button></td>"+
                         "<ul class='options'>"+
                             "<li>"+
                                 "Opciones"+
@@ -164,6 +165,7 @@ function eliminarActivos(idform){
                         "<td>"+resp[i][4]+"</td>"+
                         "<td>"+resp[i][5]+"</td>"+
                         "<td>"+resp[i][6]+"</td>"+
+                        "<td><button type='button' class='btn' onclick='showAddActiveExist(\""+resp[i][0]+"\",\""+resp[i][1]+"\",\""+resp[i][2]+"\",\""+resp[i][6]+"\",\""+resp[i][7]+"\")'>+</button></td>"+
                         "<td>"+
                             "<ul class='options'>"+
                                 "<li>"+
@@ -208,6 +210,7 @@ function eliminarActivos(idform){
                         "<td>"+resp[i][4]+"</td>"+
                         "<td>"+resp[i][5]+"</td>"+
                         "<td>"+resp[i][6]+"</td>"+
+                        "<td><button type='button' class='btn' onclick='showAddActiveExist(\""+resp[i][0]+"\",\""+resp[i][1]+"\",\""+resp[i][2]+"\",\""+resp[i][6]+"\",\""+resp[i][7]+"\")'>+</button></td>"+
                         "<td>"+
                             "<ul class='options'>"+
                                 "<li>"+

@@ -35,8 +35,8 @@ table{margin:2em auto}
 table>thead>tr{background: gray;color:#FFF;font-size: initial;}
 table{width: 100%;border-collapse: collapse}
 table tbody td{text-align: center;font-size: medium}
-td > .btn{border-radius: 3px;color:white;background-color:#444;border:thin solid #444;padding:3px;cursor: pointer}
-td > .btn:hover{background-color:darkorange;border-color:darkorange}
+td > .btn{border-radius: 3px;color:white;border:thin solid #444;padding:3px;cursor: pointer}
+td > .btn:hover{background-color:green;border-color:darkgreen}
 table tbody tr{border: 1px solid lightgray}
 table td,table th{padding: 6px}
 table>tbody>tr:hover{background: #f4f4f4}

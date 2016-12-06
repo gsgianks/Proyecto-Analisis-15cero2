@@ -109,7 +109,7 @@
                                     <td><?php echo $activos[$i][4]; ?></td>
                                     <td><?php echo $activos[$i][5]; ?></td>
                                     <td><?php echo $activos[$i][6]; ?></td>
-                                    <td><button type="button" onclick="showAddActiveExist('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][2]; ?>','<?php echo $activos[$i][6]; ?>','<?php echo $activos[$i][7]; ?>')">+</button></td>
+                                    <td><button type="button" class="btn" onclick="showAddActiveExist('<?php echo $activos[$i][0]; ?>','<?php echo $activos[$i][1]; ?>','<?php echo $activos[$i][2]; ?>','<?php echo $activos[$i][6]; ?>','<?php echo $activos[$i][7]; ?>')">+</button></td>
                                     <td>
                                         <ul class="options">
                                             <li>
