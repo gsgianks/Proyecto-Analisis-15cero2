@@ -110,7 +110,6 @@ require_once ("database.php");
 
     function seleccionarEvento($id){
         $conn = getConnection();
-        echo
         $sql = "call paAdministrarEvento(5,".$id.",null,null,null,null,null);";
         $result = $conn->query($sql);
         $eventos = null;
