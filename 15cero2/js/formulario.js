@@ -79,7 +79,7 @@ function clienteDesdeEnvento(success,id,name){
             $('#clienteNuevoModal input[type=text]').val('');
             $('#clienteNuevoModal input[type=email]').val('');
             $("#clienteNuevoModal").css("display", "none"); 
-            $("id03 .formulario").css("margin-left","20%"); 
+            $("#id03 .formulario").css("margin-left","25%"); 
               
         }else{
             // aqui va el msj en alguna etiqueta
